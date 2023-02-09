@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <raylib.h>
+#include "UIButton.h"
 using namespace std; 
 class UI {
 public: 

@@ -1,8 +1,10 @@
 #include "UI.h"
 #include <iostream>
 #include <raylib.h>
+#include "UIButton.h"
 
 bool buttons[10]; 
+
 void UI::setButtonActive(int button, bool active) 
 {
 	buttons[button] = active; 
@@ -19,6 +21,8 @@ void UI::drawUIButtons()
 void UI::drawButton(int button) {
 	switch (button) {
 	case 1:
-		DrawRectangle(100, 50, 50, 50, BLACK); 
+		UIButton button = UIButton("test", 50, 10);
+		button.setPos(50, 50);
+		button.drawButton(true); 
 	}
 }

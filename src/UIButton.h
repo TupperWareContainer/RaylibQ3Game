@@ -8,6 +8,8 @@ public:
 	UIButton(string,int,int);
 	void setPos(float, float); 
 	void drawButton(bool); 
-//private: 
-	
+private: 
+	Vector2 size; 
+	Vector2 pos; 
+	string name; 
 };
