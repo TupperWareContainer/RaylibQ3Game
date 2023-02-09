@@ -1,11 +1,14 @@
 #include <iostream> 
 #include <raylib.h> 
 #include "Player.h"
+#include "UI.h"
 using namespace std; 
 
 int main(int argc, char const *argv[])
 {
+    UI ui; 
     Player p; 
+    bool test = false; 
     const int width = 400;
     const int height = 400; 
     const int moveSpeed = 2000; 
@@ -24,13 +27,16 @@ int main(int argc, char const *argv[])
         if(IsKeyDown(KEY_RIGHT)){
             dX += moveSpeed * GetFrameTime(); 
         }
-       
+        if (IsKeyPressed(KEY_T)) {
+            test = !test; 
+        }
         BeginDrawing();
-        ClearBackground(WHITE); 
-        DrawText("Hello World!",(width * 0.5),(height * 0.5),20,BLACK); 
+        ClearBackground(DARKBLUE); 
+        ui.setButtonActive(1, test); 
+        ui.drawUIButtons(); 
+        DrawText("DEBUG",(width * 0.5),(height * 0.5),20,BLACK); 
         
-        p.setPosition(dX,dY);
-        p.renderPlayer(); 
+        
         EndDrawing(); 
     }
     CloseWindow(); 
