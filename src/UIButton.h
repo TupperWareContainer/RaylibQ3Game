@@ -8,8 +8,10 @@ public:
 	UIButton(string,int,int);
 	void setPos(float, float); 
 	void drawButton(bool); 
+	bool isMouseHover(Vector2); 
 private: 
 	Vector2 size; 
 	Vector2 pos; 
 	string name; 
+	bool activated; 
 };
