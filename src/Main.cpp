@@ -1,13 +1,12 @@
 #include <iostream> 
 #include <raylib.h> 
-#include "Player.h"
 #include "UI.h"
 using namespace std; 
 
 int main(int argc, char const *argv[])
 {
     UI ui; 
-    Player p; 
+   
     bool bPress = false; 
     bool test = false; 
     const int width = 400;
