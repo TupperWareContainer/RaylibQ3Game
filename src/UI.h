@@ -6,15 +6,17 @@ using namespace std;
 class UI {
 public: 
 	UI(); 
-	string checkForInput();
-	void setButtonActive(int,bool); 
-	void drawUIButtons(); 
+	//string checkForInput();
+	void setButtonActive(int,bool);
+	void drawUIButtons();
 	UIButton getButton(int); 
-
+	void drawUI(UIMODE);
 private:
 	bool buttons[10];
 	UIButton buttonObjs[10]; 
-	void drawButton(int);
-	
+	//void drawButton(int);
 
+};
+enum class UIMODE {
+	TEST
 };

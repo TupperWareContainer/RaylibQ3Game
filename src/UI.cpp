@@ -19,8 +19,7 @@ void UI::drawUIButtons()
 	//cout << "drawing ui buttons"; 
 	for (int i = 0; i < sizeof(buttons); i++) {
 		//cout << "drawing button no " << i << endl; 
-		buttonObjs[i].drawButton(buttons[i]); 
-		
+		buttonObjs[i].drawButton(buttons[i]);
 	}
 }
 //void UI::drawButton(int button) {
@@ -32,4 +31,15 @@ void UI::drawUIButtons()
 //}
 UIButton UI::getButton(int button) {
 	return buttonObjs[button]; 
+}
+
+void UI::drawUI(UIMODE UI) {
+	switch (UI)
+	{
+	case UI::TEST:
+		//set the corresponding UI stuff active
+		break;
+	default:
+		break;
+	}
 }
