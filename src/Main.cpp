@@ -8,6 +8,7 @@ int main(int argc, char const *argv[])
 {
     UI ui; 
     Player p; 
+    bool bPress = false; 
     bool test = false; 
     const int width = 400;
     const int height = 400; 
@@ -31,9 +32,22 @@ int main(int argc, char const *argv[])
             test = !test; 
         }
         BeginDrawing();
-        ClearBackground(DARKBLUE); 
-        ui.setButtonActive(1, test); 
-        ui.drawUIButtons(); 
+        if (bPress) {
+            ClearBackground(GREEN); 
+        }
+        else {
+            ClearBackground(DARKBLUE); 
+        }
+        ui.setButtonActive(0, test); 
+        if (test) {
+            ui.drawUIButtons();
+            if (ui.getButton(0).isMouseHover(GetMousePosition())) {
+                if (IsMouseButtonPressed(0)) {
+                    bPress = !bPress; 
+                }
+            }
+        }
+       
         DrawText("DEBUG",(width * 0.5),(height * 0.5),20,BLACK); 
         
         

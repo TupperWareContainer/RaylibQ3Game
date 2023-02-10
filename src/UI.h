@@ -5,13 +5,15 @@
 using namespace std; 
 class UI {
 public: 
-	
-	
-	static string checkForInput();
-	static void setButtonActive(int,bool); 
+	UI(); 
+	string checkForInput();
+	void setButtonActive(int,bool); 
 	void drawUIButtons(); 
+	UIButton getButton(int); 
 
 private:
+	bool buttons[10];
+	UIButton buttonObjs[10]; 
 	void drawButton(int);
 	
 
