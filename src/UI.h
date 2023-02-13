@@ -3,6 +3,9 @@
 #include <raylib.h>
 #include "UIButton.h"
 using namespace std; 
+enum class UIMODE {
+	TEST
+};
 class UI {
 public: 
 	UI(); 
@@ -17,6 +20,4 @@ private:
 	//void drawButton(int);
 
 };
-enum class UIMODE {
-	TEST
-};
+

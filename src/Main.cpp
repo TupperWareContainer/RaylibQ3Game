@@ -2,14 +2,20 @@
 #include <raylib.h> 
 #include "UI.h"
 #include "ConsoleReader.h"
+#include "BaseUnit.h" 
+#include <stdlib.h>
 using namespace std; 
 
 int main(int argc, char const *argv[])
 {
     UI ui; 
     ConsoleReader cr = ConsoleReader(); 
+    BaseUnit bu; 
     bool bPress = false; 
     bool test = false; 
+    bool hasRendered = false; 
+    string baseName; 
+    int baseCapacity; 
     const int width = 400;
     const int height = 400; 
     const int moveSpeed = 2000; 
@@ -21,7 +27,7 @@ int main(int argc, char const *argv[])
         }
         BeginDrawing();
         #pragma region Draw
-            if (bPress) {
+         /*   if (bPress) {
                 ClearBackground(GREEN); 
             }
             else {
@@ -35,14 +41,27 @@ int main(int argc, char const *argv[])
             }
             
             if (test) {
-                ui.drawUIButtons();
+                ui.drawUI(UIMODE::TEST);
                 if (ui.getButton(0).isMouseHover(GetMousePosition())) {
                     if (IsMouseButtonPressed(0)) {
                         bPress = !bPress; 
                     }
                 }
+            }*/
+            if (test == false) {
+                if (hasRendered = false) {
+                    cout << "Welcome to base builder!" << endl;
+                    cout << "Please enter the name of the base >>" << endl;
+                    baseName = cr.getInput();
+                    cout << baseName << endl;
+                    cout << "Please enter the capacity of the base" << endl;
+                    baseCapacity = atoi(cr.getInput().c_str());
+                    cout << baseCapacity << endl;
+                    bu = BaseUnit(UNITTYPE::Command, baseCapacity, 30, 30);
+                    hasRendered = true; 
+               }
             }
-      
+            
             DrawText("DEBUG",(width * 0.5),(height * 0.5),20,BLACK); 
         #pragma endregion
         EndDrawing(); 

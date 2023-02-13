@@ -36,8 +36,8 @@ UIButton UI::getButton(int button) {
 void UI::drawUI(UIMODE UI) {
 	switch (UI)
 	{
-	case UI::TEST:
-		//set the corresponding UI stuff active
+	case UIMODE::TEST:
+		buttonObjs[0].drawButton(true); 
 		break;
 	default:
 		break;
