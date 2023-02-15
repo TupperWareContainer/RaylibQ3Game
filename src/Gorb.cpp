@@ -2,19 +2,18 @@
 #include <math.h>
 #include <raylib.h>
 #include "Gorb.h"
-#include "BaseUnit.h"
 using namespace std; 
 
 Gorb::Gorb(string name,int level, double startingMorale) 
 {
 	this->level = level;
 	morale = startingMorale; 
-	currentUnit = UNITTYPE::None; 
+	currentUnit = 5; 
 	generateSkills(); 
 
 
 }
-UNITTYPE Gorb::getBestUnit() 
+int Gorb::getBestUnit() 
 {
 	int greatestSkillIndex = 0; 
 	int greatestSkillAmt = 0; 
@@ -28,17 +27,17 @@ UNITTYPE Gorb::getBestUnit()
 	switch (greatestSkillIndex)
 	{
 		case 0:
-			return UNITTYPE::; 
+			return 0; 
 		case 1:
-			return UNITTYPE::Research;
+			return 1;
 		case 2:
-			return UNITTYPE::Support;
+			return 2;
 		case 3:
-			return UNITTYPE::Combat; 
+			return 3;
 		case 4:
-			return UNITTYPE::Medical; 
+			return 4;
 		default:
-			return UNITTYPE::Support; 
+			return 5;
 	}
 }
 void Gorb::generateSkills() 
@@ -50,7 +49,7 @@ void Gorb::generateSkills()
 }
 
 #pragma region ACCESSORS AND MUTATORS
-UNITTYPE Gorb::getCurrentUnit() {
+int Gorb::getCurrentUnit() {
 	return currentUnit; 
 }
 string Gorb::getName() {

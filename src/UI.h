@@ -4,7 +4,7 @@
 #include "UIButton.h"
 using namespace std; 
 enum class UIMODE {
-	TEST
+	TEST,
 };
 class UI {
 public: 

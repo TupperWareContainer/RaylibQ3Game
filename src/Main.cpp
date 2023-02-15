@@ -27,6 +27,7 @@ int main(int argc, char const *argv[])
         }
         BeginDrawing();
         #pragma region Draw
+        ClearBackground(BLUE);
          /*   if (bPress) {
                 ClearBackground(GREEN); 
             }
@@ -48,8 +49,9 @@ int main(int argc, char const *argv[])
                     }
                 }
             }*/
+       
             if (test == false) {
-                if (hasRendered = false) {
+                if (hasRendered == false) {
                     cout << "Welcome to base builder!" << endl;
                     cout << "Please enter the name of the base >>" << endl;
                     baseName = cr.getInput();
@@ -58,8 +60,12 @@ int main(int argc, char const *argv[])
                     baseCapacity = atoi(cr.getInput().c_str());
                     cout << baseCapacity << endl;
                     bu = BaseUnit(UNITTYPE::Command, baseCapacity, 30, 30);
+                  
                     hasRendered = true; 
                }
+            }
+            if (hasRendered) {
+                bu.Render(); /// IT WORKS
             }
             
             DrawText("DEBUG",(width * 0.5),(height * 0.5),20,BLACK); 

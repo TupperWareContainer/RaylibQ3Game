@@ -4,19 +4,16 @@
 #include <list>
 #include "Gorb.h"
 
-namespace UnitDef {
-	enum UNITTYPE
-	{
-		Command,
-		Research,
-		Support,
-		Combat,
-		Medical,
-		None
-	};
-}
+enum class UNITTYPE
+{
+	Command = 0,
+	Research = 1,
+	Support = 2,
+	Combat = 3,
+	Medical = 4,
+	None = 5
+};
 using namespace std;
-using namespace UnitDef;
 class BaseUnit {
 	public:
 		BaseUnit(); 
@@ -24,13 +21,14 @@ class BaseUnit {
 		void Render();
 		int getLevel();
 		int getCapacity(); 
+		void setPosition(int, int); 
 		void addGorb(Gorb); 
 		Vector2 getPosition(); 
-		list<Gorb> getGorbList(); 
+		list<Gorb> getGorbList();
 
 	private:
 		int level;
-		UNITTYPE unitType; 
+		int unitType; 
 		list<Gorb> gorbList; 
 		Vector2 pos; 
 		int capacity; 

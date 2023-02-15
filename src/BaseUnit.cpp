@@ -4,12 +4,20 @@
 #include <list>
 
 using namespace std; 
+BaseUnit::BaseUnit() {
+	this->unitType = 5;
+	pos = { 10,10 };
+	level = 1;
+	capacity = 30;
+}
 BaseUnit::BaseUnit(UNITTYPE unitType, int startingCapacity, int posX, int posY) {
-	this->unitType = unitType; 
+	this->unitType =static_cast<int>(unitType); 
 	pos.x = posX; 
 	pos.y = posY; 
 	capacity = startingCapacity; 
 	level = 1; 
+	
+	
 }
 void BaseUnit::addGorb(Gorb gorb) {
 	gorbList.push_front(gorb); 
@@ -19,12 +27,16 @@ void BaseUnit::addGorb(Gorb gorb) {
 /// </summary>
 void BaseUnit::Render() 
 {
-	Image image = LoadImage("assets/images/Placeholder.png"); 
-	Texture2D texture = LoadTextureFromImage(image); 
-	UnloadImage(image); //unloads the image after saving to VRAM via texture conversion 
+	Image image = LoadImage("assets/images/Placeholder.png");
+	Texture texture = LoadTextureFromImage(image);
+	UnloadImage(image);
 	DrawTextureV(texture, pos, WHITE); 
 }
 #pragma region ACCESSORS AND MUTATORS
+void BaseUnit::setPosition(int posX, int posY) {
+	pos.x = posX; 
+	pos.y = posY; 
+}
 list<Gorb> BaseUnit::getGorbList() 
 {
 	return gorbList; 
@@ -39,4 +51,5 @@ int BaseUnit::getCapacity() {
 Vector2 BaseUnit::getPosition() {
 	return pos; 
 }
+
 #pragma endregion
