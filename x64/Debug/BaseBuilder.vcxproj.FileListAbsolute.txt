@@ -1,0 +1,2 @@
+E:\VGD\JohnF\RaylibQ3Game\x64\Debug\BaseBuilder.exe
+E:\VGD\JohnF\RaylibQ3Game\x64\Debug\BaseBuilder.pdb
