@@ -5,6 +5,7 @@
 using namespace std; 
 enum class UIMODE {
 	TEST,
+	MOVE
 };
 class UI {
 public: 

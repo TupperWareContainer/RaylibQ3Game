@@ -11,9 +11,9 @@ int main(int argc, char const *argv[])
     UI ui; 
     ConsoleReader cr = ConsoleReader(); 
     BaseUnit bu; 
-    bool bPress = false; 
     bool test = false; 
     bool hasRendered = false; 
+    bool moveMode = false; 
     string baseName; 
     int baseCapacity; 
     const int width = 400;
@@ -60,12 +60,20 @@ int main(int argc, char const *argv[])
                     baseCapacity = atoi(cr.getInput().c_str());
                     cout << baseCapacity << endl;
                     bu = BaseUnit(UNITTYPE::Command, baseCapacity, 30, 30);
-                  
+                    ui.setButtonActive(1, true); 
                     hasRendered = true; 
                }
             }
             if (hasRendered) {
                 bu.Render(); /// IT WORKS
+                ui.drawUIButtons(); 
+                if (ui.getButton(1).isMouseHover(GetMousePosition())) {
+                    if (IsMouseButtonPressed(0)) moveMode = !moveMode; 
+                    bu.setMoveable(moveMode); 
+                }
+                if (bu.getMovable()) {
+                    bu.setPosition(GetMousePosition()); 
+                }
             }
             
             DrawText("DEBUG",(width * 0.5),(height * 0.5),20,BLACK); 

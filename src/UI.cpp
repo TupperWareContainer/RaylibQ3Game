@@ -6,7 +6,9 @@
 using namespace std; 
 UI::UI() {
 	buttonObjs[0] = UIButton("test", 50, 10);
+	buttonObjs[1] = UIButton("Move", 50, 10); 
 	buttonObjs[0].setPos(50, 50); 
+	buttonObjs[1].setPos(300, 300); 
 }
 void UI::setButtonActive(int button, bool active) 
 {
@@ -39,6 +41,8 @@ void UI::drawUI(UIMODE UI) {
 	case UIMODE::TEST:
 		buttonObjs[0].drawButton(true); 
 		break;
+	case UIMODE::MOVE:
+		buttonObjs[0].drawButton(true); 
 	default:
 		break;
 	}

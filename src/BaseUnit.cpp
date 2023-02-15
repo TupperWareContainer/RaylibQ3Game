@@ -9,6 +9,7 @@ BaseUnit::BaseUnit() {
 	pos = { 10,10 };
 	level = 1;
 	capacity = 30;
+	canMove = false; 
 }
 BaseUnit::BaseUnit(UNITTYPE unitType, int startingCapacity, int posX, int posY) {
 	this->unitType =static_cast<int>(unitType); 
@@ -16,7 +17,7 @@ BaseUnit::BaseUnit(UNITTYPE unitType, int startingCapacity, int posX, int posY) 
 	pos.y = posY; 
 	capacity = startingCapacity; 
 	level = 1; 
-	
+	canMove = false; 
 	
 }
 void BaseUnit::addGorb(Gorb gorb) {
@@ -27,15 +28,18 @@ void BaseUnit::addGorb(Gorb gorb) {
 /// </summary>
 void BaseUnit::Render() 
 {
-	Image image = LoadImage("assets/images/Placeholder.png");
+	Image image = LoadImage("./assets/images/CommandUnitIcon.png");
 	Texture texture = LoadTextureFromImage(image);
 	UnloadImage(image);
 	DrawTextureV(texture, pos, WHITE); 
-}
+} 
 #pragma region ACCESSORS AND MUTATORS
-void BaseUnit::setPosition(int posX, int posY) {
-	pos.x = posX; 
-	pos.y = posY; 
+void BaseUnit::setMoveable(bool movable) {
+	canMove = movable;
+}
+void BaseUnit::setPosition(Vector2 mousePos) {
+	pos.x = mousePos.x; 
+	pos.y = mousePos.y; 
 }
 list<Gorb> BaseUnit::getGorbList() 
 {
@@ -51,5 +55,7 @@ int BaseUnit::getCapacity() {
 Vector2 BaseUnit::getPosition() {
 	return pos; 
 }
-
+bool BaseUnit::getMovable() {
+	return canMove; 
+}
 #pragma endregion
