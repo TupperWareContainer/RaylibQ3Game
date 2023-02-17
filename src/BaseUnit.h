@@ -1,8 +1,8 @@
 #pragma once
 #include <raylib.h>
 #include <iostream>
-#include <list>
 #include "Gorb.h"
+#include <vector>
 
 enum class UNITTYPE
 {
@@ -21,19 +21,27 @@ class BaseUnit {
 		void Render();
 		int getLevel();
 		int getCapacity(); 
+		int getType(); 
 		void setPosition(Vector2); 
 		void setMoveable(bool);
 		void addGorb(Gorb); 
+		void addConnection(BaseUnit); 
+		void removeConnection(BaseUnit); 
+		bool checkCollision(Rectangle); 
 		Vector2 getPosition(); 
-		list<Gorb> getGorbList();
+		vector<Gorb> getGorbList();
 		bool getMovable(); 
+		bool checkVald(); 
+		bool equals(BaseUnit); 
 	
 
 	private:
 		int level;
+		Rectangle bounds; 
 		bool canMove; 
 		int unitType; 
-		list<Gorb> gorbList; 
+		vector<Gorb> gorbList; 
+		vector<BaseUnit> connectedTo; 
 		Vector2 pos; 
 		int capacity; 
 		

@@ -68,9 +68,10 @@ int main(int argc, char const *argv[])
                 bu.Render(); /// IT WORKS
                 ui.drawUIButtons(); 
                 if (ui.getButton(1).isMouseHover(GetMousePosition())) {
-                    if (IsMouseButtonPressed(0)) moveMode = !moveMode; 
-                    bu.setMoveable(moveMode); 
+                    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) moveMode = !moveMode; 
                 }
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && moveMode) bu.setMoveable(true);
+                else bu.setMoveable(false);
                 if (bu.getMovable()) {
                     bu.setPosition(GetMousePosition()); 
                 }

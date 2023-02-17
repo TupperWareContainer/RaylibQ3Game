@@ -99,6 +99,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\BaseUnit.cpp" />
+    <ClCompile Include="src\Connection.cpp" />
     <ClCompile Include="src\ConsoleReader.cpp" />
     <ClCompile Include="src\Gorb.cpp" />
     <ClCompile Include="src\Main.cpp" />
@@ -107,8 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BaseUnit.h" />
+    <ClInclude Include="src\Connection.h" />
     <ClInclude Include="src\ConsoleReader.h" />
     <ClInclude Include="src\Gorb.h" />
+    <ClInclude Include="src\ConnectionManager.h" />
     <ClInclude Include="src\UIButton.h" />
     <ClInclude Include="src\UI.h" />
   </ItemGroup>
