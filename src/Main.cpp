@@ -7,6 +7,7 @@
 #include <stdlib.h>
 using namespace std; 
 
+// TODO: Impliment connection backend
 int main(int argc, char const *argv[])
 {
     cout << "debug testing" << endl;
@@ -33,28 +34,6 @@ int main(int argc, char const *argv[])
         BeginDrawing();
         #pragma region Draw
         ClearBackground(BLUE);
-         /*   if (bPress) {
-                ClearBackground(GREEN); 
-            }
-            else {
-                ClearBackground(DARKBLUE); 
-            }
-            if (!test) {
-                cout << "Please enter \"test\"\n";
-                if (cr.getInput().compare("test") == 0) {
-                    test = !test;
-                }
-            }
-            
-            if (test) {
-                ui.drawUI(UIMODE::TEST);
-                if (ui.getButton(0).isMouseHover(GetMousePosition())) {
-                    if (IsMouseButtonPressed(0)) {
-                        bPress = !bPress; 
-                    }
-                }
-            }*/
-       
             if (test == false) {
                 if (hasRendered == false) {
                     cout << "Welcome to base builder!" << endl;
@@ -85,6 +64,7 @@ int main(int argc, char const *argv[])
                         ClearBackground(BEIGE); 
                     }
                 }
+#pragma region DRAWMODE
                 if (drawMode) {
                     if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) canDraw = true; 
                     if (currPlacingSegment == 1) {
@@ -109,6 +89,7 @@ int main(int argc, char const *argv[])
                 }
                 cout << currPlacingSegment << endl; 
                 cm.renderConnections();
+#pragma endregion DRAWMODE
                 if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && moveMode) bu.setMoveable(true);
                 else bu.setMoveable(false);
                 if (bu.getMovable()) {
