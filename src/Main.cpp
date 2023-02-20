@@ -1,4 +1,5 @@
 #include <iostream> 
+#include "Connection.h"
 #include <raylib.h> 
 #include "UI.h"
 #include "ConsoleReader.h"

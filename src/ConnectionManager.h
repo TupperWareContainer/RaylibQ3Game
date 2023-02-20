@@ -1,17 +1,12 @@
 #pragma once
-#include <raylib.h>
+#include "Connection.h"
 #include <vector>
+#include <raylib.h>
 
-using namespace std; 
-/// <summary>
-/// Connections are essentially roads that allow units to communicate with eachother, sorta like cities:skylines 
-/// </summary>
 class ConnectionManager {
 	public:
 		ConnectionManager(); 
-		
-
+		void createConnection(Vector2, Vector2); 
 	private:
-		vector<Connection> connections; 
-
+		std::vector<Connection> connections; 
 };

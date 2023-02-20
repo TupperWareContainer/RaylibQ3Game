@@ -1,11 +1,11 @@
 #pragma once
 #include "raylib.h"
-#include "ConnectionManager.h"
 #include "BaseUnit.h"
 
 using namespace std; 
 class Connection {
 	public:
+		Connection(); 
 		Connection(Vector2, Vector2);
 		void PartialRender(); 
 		void FullRender(); 

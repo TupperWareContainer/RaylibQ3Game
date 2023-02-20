@@ -7,8 +7,10 @@ using namespace std;
 UI::UI() {
 	buttonObjs[0] = UIButton("test", 50, 10);
 	buttonObjs[1] = UIButton("Move", 50, 10); 
+	buttonObjs[2] = UIButton("Draw", 50, 10); 
 	buttonObjs[0].setPos(50, 50); 
 	buttonObjs[1].setPos(300, 300); 
+	buttonObjs[2].setPos(300, 350); 
 }
 void UI::setButtonActive(int button, bool active) 
 {
