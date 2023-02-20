@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\x64",
     "\\x64\\Debug"
   ],
-  "SelectedNode": "\\src\\Main.cpp",
+  "SelectedNode": "\\src\\BaseUnit.h",
   "PreviewInSolutionExplorer": false
 }

@@ -36,6 +36,9 @@
     <ClCompile Include="src\Connection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\ConnectionManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\UI.h">
@@ -53,10 +56,10 @@
     <ClInclude Include="src\Gorb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ConnectionManager.h">
+    <ClInclude Include="src\Connection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Connection.h">
+    <ClInclude Include="src\ConnectionManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

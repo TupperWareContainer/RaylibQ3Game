@@ -1,10 +1,5 @@
-﻿  BaseUnit.cpp
-  Connection.cpp
-E:\VGD\JohnF\RaylibQ3Game\src\ConnectionManager.h(15,10): error C2065: 'Connection': undeclared identifier
-E:\VGD\JohnF\RaylibQ3Game\src\ConnectionManager.h(15,3): error C2923: 'std::vector': 'Connection' is not a valid template type argument for parameter '_Ty'
-E:\VGD\JohnF\RaylibQ3Game\src\ConnectionManager.h(15,3): error C2976: 'std::vector': too few template arguments
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include\vector(413): message : see declaration of 'std::vector'
-E:\VGD\JohnF\RaylibQ3Game\src\Connection.cpp(13,1): fatal error C1004: unexpected end-of-file found
-  ConsoleReader.cpp
+﻿  Connection.cpp
+  ConnectionManager.cpp
   Main.cpp
   Generating Code...
+  BaseBuilder.vcxproj -> C:\Users\boxtr\Documents\RaylibQ3Game\x64\Debug\BaseBuilder.exe

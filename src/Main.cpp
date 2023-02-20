@@ -1,5 +1,5 @@
 #include <iostream> 
-#include "Connection.h"
+#include "ConnectionManager.h"
 #include <raylib.h> 
 #include "UI.h"
 #include "ConsoleReader.h"
@@ -9,12 +9,16 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
+    cout << "debug testing" << endl;
     UI ui; 
     ConsoleReader cr = ConsoleReader(); 
+    ConnectionManager cm = ConnectionManager(); 
     BaseUnit bu; 
     bool test = false; 
     bool hasRendered = false; 
     bool moveMode = false; 
+    bool drawMode = false, canDraw = false;
+    unsigned int currPlacingSegment = 0; 
     string baseName; 
     int baseCapacity; 
     const int width = 400;
@@ -62,6 +66,7 @@ int main(int argc, char const *argv[])
                     cout << baseCapacity << endl;
                     bu = BaseUnit(UNITTYPE::Command, baseCapacity, 30, 30);
                     ui.setButtonActive(1, true); 
+                    ui.setButtonActive(2, true); 
                     hasRendered = true; 
                }
             }
@@ -71,6 +76,39 @@ int main(int argc, char const *argv[])
                 if (ui.getButton(1).isMouseHover(GetMousePosition())) {
                     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) moveMode = !moveMode; 
                 }
+                if (ui.getButton(2).isMouseHover(GetMousePosition())) {
+                    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+                        moveMode = false; 
+                        drawMode = !drawMode;
+                        canDraw = false; 
+                        currPlacingSegment = 1; 
+                        ClearBackground(BEIGE); 
+                    }
+                }
+                if (drawMode) {
+                    if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) canDraw = true; 
+                    if (currPlacingSegment == 1) {
+                        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && canDraw) {
+                            cm.setNewSegmentBeginning(GetMousePosition());
+                            cout << "setting beginning to: " << GetMousePosition().x << ", " << GetMousePosition().y << endl;
+                            currPlacingSegment++;
+                            //ClearBackground(RED);
+                            canDraw = false; 
+                        }
+                    }
+                    if (currPlacingSegment == 2) {
+                        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && canDraw) {
+                            cm.setNewSegmentEnd(GetMousePosition());
+                            currPlacingSegment++;
+                        }
+                    }
+                    if (currPlacingSegment == 3) {
+                        cm.createConnection(); 
+                        currPlacingSegment++; 
+                    }
+                }
+                cout << currPlacingSegment << endl; 
+                cm.renderConnections();
                 if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && moveMode) bu.setMoveable(true);
                 else bu.setMoveable(false);
                 if (bu.getMovable()) {

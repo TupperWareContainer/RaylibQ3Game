@@ -7,6 +7,7 @@ class Connection {
 	public:
 		Connection(); 
 		Connection(Vector2, Vector2);
+		void setEnd(Vector2); 
 		void PartialRender(); 
 		void FullRender(); 
 		~Connection();
