@@ -1,4 +1,6 @@
 #include <iostream> 
+#include <string>
+#include <vector>
 #include "ConnectionManager.h"
 #include <raylib.h> 
 #include "UI.h"
@@ -10,11 +12,14 @@ using namespace std;
 // TODO: Impliment connection backend
 int main(int argc, char const *argv[])
 {
-    cout << "debug testing" << endl;
+    
+    cout << "debug testing sfzsfgsf" << (rand() % 101) << endl;
     UI ui; 
     ConsoleReader cr = ConsoleReader(); 
-    ConnectionManager cm = ConnectionManager(); 
     BaseUnit bu; 
+    vector<BaseUnit> bV = vector<BaseUnit>(); 
+    bV.push_back(bu); 
+    ConnectionManager cm = ConnectionManager(bV);
     bool test = false; 
     bool hasRendered = false; 
     bool moveMode = false; 
@@ -85,6 +90,16 @@ int main(int argc, char const *argv[])
                     if (currPlacingSegment == 3) {
                         cm.createConnection(); 
                         currPlacingSegment++; 
+                    }
+                    if (IsKeyPressed(KEY_S)) {
+                        cm.saveTempConnections(); 
+                        ClearBackground(GREEN); 
+                    }
+                    if (IsKeyPressed(KEY_C) || IsKeyPressed(KEY_Q)) {
+                        cm.clearTempConnections(); 
+                        ClearBackground(RED); 
+                        drawMode = false; 
+                        currPlacingSegment = 0; 
                     }
                 }
                 cout << currPlacingSegment << endl; 

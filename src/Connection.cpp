@@ -1,6 +1,7 @@
 #include "Connection.h"
 #include <raylib.h>
 #include "BaseUnit.h"
+#include <raymath.h>
 using namespace std; 
 Connection::Connection() {
 	cout << "WARNING : CONNECTION OBJECTS HAVE BEEN INITIALIZED WITHOUT VALID START OR END POS" << endl; 

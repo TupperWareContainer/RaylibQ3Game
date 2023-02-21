@@ -10,6 +10,9 @@ BaseUnit::BaseUnit() {
 	level = 1;
 	capacity = 30;
 	canMove = false; 
+	bounds = Rectangle();
+	bounds.x = pos.x;
+	bounds.y = pos.y;
 }
 BaseUnit::BaseUnit(UNITTYPE unitType, int startingCapacity, int posX, int posY) {
 	this->unitType =static_cast<int>(unitType); 
@@ -57,8 +60,12 @@ void BaseUnit::Render()
 	UnloadImage(image);
 	DrawTextureV(texture, pos, WHITE); 
 } 
-bool BaseUnit::checkCollision(Rectangle collider) {
+bool BaseUnit::checkCollisionRect(Rectangle collider) {
 	return CheckCollisionRecs(bounds, collider); 
+}
+bool BaseUnit::checkCollisonCircle(Vector2 centerPos,float radius) {
+
+	return CheckCollisionCircleRec(centerPos,radius,bounds); 
 }
 #pragma region ACCESSORS AND MUTATORS
 void BaseUnit::setMoveable(bool movable) {

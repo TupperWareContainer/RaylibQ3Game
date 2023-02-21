@@ -27,7 +27,8 @@ class BaseUnit {
 		void addGorb(Gorb); 
 		void addConnection(BaseUnit); 
 		void removeConnection(BaseUnit); 
-		bool checkCollision(Rectangle); 
+		bool checkCollisionRect(Rectangle); 
+		bool checkCollisonCircle(Vector2, float);
 		Vector2 getPosition(); 
 		vector<Gorb> getGorbList();
 		bool getMovable(); 
