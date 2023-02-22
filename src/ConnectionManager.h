@@ -4,11 +4,10 @@
 #include <vector>
 #include <raylib.h>
 #include <iostream>
-
+#define MAXBASEUNITS 10; 
 class ConnectionManager {
 	public:
 		ConnectionManager(); 
-		ConnectionManager(std::vector<BaseUnit>);
 		/// <summary>
 		/// Creates a new segment with stored beginning and end points set using the <c>setNewSegmentBeginning()</c> and <c>setNewSegmentEnd()</c> methods
 		/// </summary>
@@ -19,7 +18,7 @@ class ConnectionManager {
 		///<p>Renders the connections managed by this connection manager.</p>
 		/// Renders "permenant" connections first before rendering temporary connections
 		/// </summary>
-		void renderConnections(); 
+		void renderConnections(BaseUnit*);
 		void setNewSegmentBeginning(Vector2); 
 		void setNewSegmentEnd(Vector2); 
 		Connection getConnection(unsigned int); 
@@ -31,7 +30,8 @@ class ConnectionManager {
 	private:
 		std::vector<Connection> connections; 
 		std::vector<Connection> tempConnections; 
-		std::vector<BaseUnit> baseUnits; 
+		Rectangle c1;
+		Rectangle c2; 
 		Vector2 segBegin; 
 		Vector2 segEnd; 
 		

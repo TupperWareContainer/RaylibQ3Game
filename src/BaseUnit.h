@@ -34,6 +34,7 @@ class BaseUnit {
 		bool getMovable(); 
 		bool checkVald(); 
 		bool equals(BaseUnit); 
+		Rectangle getRect(); 
 	
 
 	private:

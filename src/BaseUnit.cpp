@@ -13,6 +13,8 @@ BaseUnit::BaseUnit() {
 	bounds = Rectangle();
 	bounds.x = pos.x;
 	bounds.y = pos.y;
+	bounds.width = 32; 
+	bounds.height = 32; 
 }
 BaseUnit::BaseUnit(UNITTYPE unitType, int startingCapacity, int posX, int posY) {
 	this->unitType =static_cast<int>(unitType); 
@@ -24,6 +26,8 @@ BaseUnit::BaseUnit(UNITTYPE unitType, int startingCapacity, int posX, int posY) 
 	bounds = Rectangle(); 
 	bounds.x = posX; 
 	bounds.y = posY; 
+	bounds.width = 32; 
+	bounds.height = 32; 
 	
 }
 void BaseUnit::addGorb(Gorb gorb) {
@@ -56,15 +60,18 @@ void BaseUnit::Render()
 	Image image = LoadImage("./assets/images/CommandUnitIcon.png");
 	bounds.width = image.width; 
 	bounds.height = image.height; 
+	cout << "bounds.width: " << bounds.width << endl; 
+	cout << "bounds.height: " << bounds.height << endl; 
 	Texture texture = LoadTextureFromImage(image);
 	UnloadImage(image);
 	DrawTextureV(texture, pos, WHITE); 
+	//DrawRectangleLines(bounds.x, bounds.y, bounds.width, bounds.height, GREEN); // draws collison 
 } 
 bool BaseUnit::checkCollisionRect(Rectangle collider) {
+	
 	return CheckCollisionRecs(bounds, collider); 
 }
 bool BaseUnit::checkCollisonCircle(Vector2 centerPos,float radius) {
-
 	return CheckCollisionCircleRec(centerPos,radius,bounds); 
 }
 #pragma region ACCESSORS AND MUTATORS
@@ -96,6 +103,9 @@ bool BaseUnit::getMovable() {
 }
 int BaseUnit::getType() {
 	return unitType; 
+}
+Rectangle BaseUnit::getRect() {
+	return bounds; 
 }
 #pragma endregion
 bool BaseUnit::equals(BaseUnit baseUnit) {

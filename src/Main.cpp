@@ -16,10 +16,8 @@ int main(int argc, char const *argv[])
     cout << "debug testing sfzsfgsf" << (rand() % 101) << endl;
     UI ui; 
     ConsoleReader cr = ConsoleReader(); 
-    BaseUnit bu; 
-    vector<BaseUnit> bV = vector<BaseUnit>(); 
-    bV.push_back(bu); 
-    ConnectionManager cm = ConnectionManager(bV);
+    BaseUnit bV[10]; 
+    ConnectionManager cm = ConnectionManager();
     bool test = false; 
     bool hasRendered = false; 
     bool moveMode = false; 
@@ -48,14 +46,15 @@ int main(int argc, char const *argv[])
                     cout << "Please enter the capacity of the base" << endl;
                     baseCapacity = atoi(cr.getInput().c_str());
                     cout << baseCapacity << endl;
-                    bu = BaseUnit(UNITTYPE::Command, baseCapacity, 30, 30);
+                    bV[0] = BaseUnit(UNITTYPE::Command, baseCapacity, 30, 30);
                     ui.setButtonActive(1, true); 
                     ui.setButtonActive(2, true); 
                     hasRendered = true; 
+                   
                }
             }
             if (hasRendered) {
-                bu.Render(); /// IT WORKS
+                bV[0].Render(); /// IT WORKS
                 ui.drawUIButtons(); 
                 if (ui.getButton(1).isMouseHover(GetMousePosition())) {
                     if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) moveMode = !moveMode; 
@@ -69,6 +68,7 @@ int main(int argc, char const *argv[])
                         ClearBackground(BEIGE); 
                     }
                 }
+                
 #pragma region DRAWMODE
                 if (drawMode) {
                     if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) canDraw = true; 
@@ -103,12 +103,12 @@ int main(int argc, char const *argv[])
                     }
                 }
                 cout << currPlacingSegment << endl; 
-                cm.renderConnections();
+                cm.renderConnections(bV);
 #pragma endregion DRAWMODE
-                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && moveMode) bu.setMoveable(true);
-                else bu.setMoveable(false);
-                if (bu.getMovable()) {
-                    bu.setPosition(GetMousePosition()); 
+                if (IsMouseButtonDown(MOUSE_BUTTON_LEFT) && moveMode) bV[0].setMoveable(true);
+                else bV[0].setMoveable(false);
+                if (bV[0].getMovable()) {
+                    bV[0].setPosition(GetMousePosition()); 
                 }
             }
             
