@@ -57,7 +57,9 @@ bool BaseUnit::checkVald() {
 /// </summary>
 void BaseUnit::Render() 
 {
-	Image image = LoadImage("./assets/images/CommandUnitIcon.png");
+	char[] path = "./assets/images/Placeholder.png"; 
+
+	Image image = LoadImage(path);
 	bounds.width = image.width; 
 	bounds.height = image.height; 
 	cout << "bounds.width: " << bounds.width << endl; 

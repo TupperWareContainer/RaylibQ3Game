@@ -101,6 +101,11 @@ int main(int argc, char const *argv[])
                         drawMode = false; 
                         currPlacingSegment = 0; 
                     }
+                    if (IsKeyPressed(KEY_D)) {
+                        cm.clearConnections();
+                        cm.clearTempConnections(); 
+                        currPlacingSegment = 0;
+                    }
                 }
                 cout << currPlacingSegment << endl; 
                 cm.renderConnections(bV);

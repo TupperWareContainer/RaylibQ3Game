@@ -13,12 +13,12 @@ ConnectionManager::ConnectionManager() {
 	segEnd = { 0,0 };
 	c1.x = segBegin.x;
 	c1.y = segBegin.y;
-	c1.width = 3;
-	c1.height = 3;
+	c1.width = 6;
+	c1.height = 6;
 	c2.x = segBegin.x;
 	c2.y = segBegin.y;
-	c2.width = 3;
-	c2.height = 3;
+	c2.width = 6;
+	c2.height = 6;
 }
 void ConnectionManager::createConnection() {
 	Connection c = Connection(segBegin, segEnd); 
@@ -106,4 +106,11 @@ void ConnectionManager::saveTempConnections() {
 	connections.insert(connections.end(), tempConnections.begin(), tempConnections.end()); 
 	tempConnections.clear(); 
 	std::cout << "temp connections saved!" << endl; 
+}
+void ConnectionManager::updateConnections(BaseUnit units[]) {
+	int arraySize = MAXBASEUNITS; 
+	for each (Connection connection in connections)
+	{
+		connection.CheckCollison(units, arraySize);
+	}
 }

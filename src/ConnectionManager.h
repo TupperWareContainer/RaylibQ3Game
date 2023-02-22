@@ -24,6 +24,7 @@ class ConnectionManager {
 		Connection getConnection(unsigned int); 
 		Connection getTempConnection(unsigned int);
 		void saveTempConnections(); 
+		void updateConnections(BaseUnit* ); 
 		void clearConnections(); 
 		void clearConnection(unsigned int); 
 		void clearTempConnections(); 
