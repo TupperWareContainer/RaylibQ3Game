@@ -7,6 +7,7 @@ using namespace std;
 class Gorb {
 	public:
 		Gorb(string,int,double);
+		Gorb(); 
 		int getBestUnit(); 
 		int getCurrentUnit(); 
 		string getName(); 
@@ -15,6 +16,7 @@ class Gorb {
 		void setSkill(int,int); 
 	private:
 		void generateSkills(); 
+		string generateName(); 
 		int currentUnit; 
 		int skills[5];
 		string name; 

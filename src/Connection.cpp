@@ -1,3 +1,4 @@
+#pragma deprecated 
 #include "Connection.h"
 #include <raylib.h>
 #include "BaseUnit.h"

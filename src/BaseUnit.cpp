@@ -11,10 +11,11 @@ BaseUnit::BaseUnit() {
 	capacity = 30;
 	canMove = false; 
 	bounds = Rectangle();
-	bounds.x = pos.x;
-	bounds.y = pos.y;
-	bounds.width = 32; 
-	bounds.height = 32; 
+	bounds.width = 32;
+	bounds.height = 32;
+	bounds.x = pos.x - (bounds.width / 2);
+	bounds.y = pos.y - (bounds.height / 2);
+	
 }
 BaseUnit::BaseUnit(UNITTYPE unitType, int startingCapacity, int posX, int posY) {
 	this->unitType =static_cast<int>(unitType); 
@@ -23,9 +24,11 @@ BaseUnit::BaseUnit(UNITTYPE unitType, int startingCapacity, int posX, int posY) 
 	capacity = startingCapacity; 
 	level = 1;
 	canMove = false; 
-	bounds = Rectangle(); 
-	bounds.x = posX; 
-	bounds.y = posY; 
+	bounds = Rectangle();
+	bounds.width = 32;
+	bounds.height = 32;
+	bounds.x = posX - (bounds.width / 2);
+	bounds.y = posY - (bounds.height / 2);
 	bounds.width = 32; 
 	bounds.height = 32; 
 	
@@ -57,9 +60,31 @@ bool BaseUnit::checkVald() {
 /// </summary>
 void BaseUnit::Render() 
 {
-	char[] path = "./assets/images/Placeholder.png"; 
+	string path;
+	switch (unitType)
+	{
+		case 0:
+			path = "./assets/images/CommandUnitIcon.png"; 
+			break; 
+		case 1: 
+			path = "./assets/images/Research.png";
+			break; 
+		case 2:
+			path = "./assets/images/Support.png";
+			break; 
+		case 3:
+			path = "./assets/images/Combat.png";
+			break; 
+		case 4:
+			path = "./assets/images/Medical.png"; 
+			break; 
+		default:
+			path = "./assets/images/Placeholder.png";
+			break;
+	}
 
-	Image image = LoadImage(path);
+
+	Image image = LoadImage(path.c_str());
 	bounds.width = image.width; 
 	bounds.height = image.height; 
 	cout << "bounds.width: " << bounds.width << endl; 
@@ -81,14 +106,17 @@ void BaseUnit::setMoveable(bool movable) {
 	canMove = movable;
 }
 void BaseUnit::setPosition(Vector2 mousePos) {
-	pos.x = mousePos.x; 
-	pos.y = mousePos.y; 
+	pos.x = mousePos.x -(bounds.width / 2); 
+	pos.y = mousePos.y - (bounds.height / 2); 
 	bounds.x = pos.x; 
 	bounds.y = pos.y; 
 }
 vector<Gorb> BaseUnit::getGorbList() 
 {
 	return gorbList; 
+}
+bool BaseUnit::isMouseHover(Vector2 mousePos) {
+	return CheckCollisionPointRec(mousePos, bounds); 
 }
 int BaseUnit::getLevel() 
 {

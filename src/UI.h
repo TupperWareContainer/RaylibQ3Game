@@ -15,6 +15,7 @@ public:
 	void drawUIButtons();
 	UIButton getButton(int); 
 	void drawUI(UIMODE);
+	void printDefaultMenu(); 
 private:
 	bool buttons[10];
 	UIButton buttonObjs[10]; 

@@ -1,4 +1,5 @@
 #pragma once
+#pragma deprecated
 #include <raylib.h>
 #include "BaseUnit.h"
 #include <raymath.h>

@@ -29,6 +29,7 @@ class BaseUnit {
 		void removeConnection(BaseUnit); 
 		bool checkCollisionRect(Rectangle); 
 		bool checkCollisonCircle(Vector2, float);
+		bool isMouseHover(Vector2); 
 		Vector2 getPosition(); 
 		vector<Gorb> getGorbList();
 		bool getMovable(); 

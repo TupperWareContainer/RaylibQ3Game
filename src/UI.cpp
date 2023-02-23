@@ -36,7 +36,10 @@ void UI::drawUIButtons()
 UIButton UI::getButton(int button) {
 	return buttonObjs[button]; 
 }
-
+void UI::printDefaultMenu() {
+	cout << "What would you like to do?" << endl; 
+	cout << "" << endl; 
+}
 void UI::drawUI(UIMODE UI) {
 	switch (UI)
 	{

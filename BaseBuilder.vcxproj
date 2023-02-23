@@ -102,17 +102,22 @@
     <ClCompile Include="src\Connection.cpp" />
     <ClCompile Include="src\ConnectionManager.cpp" />
     <ClCompile Include="src\ConsoleReader.cpp" />
+    <ClCompile Include="src\FakeConsole.cpp" />
     <ClCompile Include="src\Gorb.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Base.cpp" />
     <ClCompile Include="src\UIButton.cpp" />
     <ClCompile Include="src\UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Base.h" />
     <ClInclude Include="src\BaseUnit.h" />
     <ClInclude Include="src\Connection.h" />
     <ClInclude Include="src\ConnectionManager.h" />
     <ClInclude Include="src\ConsoleReader.h" />
+    <ClInclude Include="src\FakeConsole.h" />
     <ClInclude Include="src\Gorb.h" />
+    <ClInclude Include="src\Resource.h" />
     <ClInclude Include="src\UIButton.h" />
     <ClInclude Include="src\UI.h" />
   </ItemGroup>
