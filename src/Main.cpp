@@ -14,7 +14,7 @@ using namespace std;
 // TODO: Impliment connection backend
 int main(int argc, char const *argv[])
 {
-    
+    SetTargetFPS(60); 
     cout << "debug testing sfzsfgsf" << (rand() % 101) << endl;
    //UI ui; 
     ConsoleReader cr = ConsoleReader(); 

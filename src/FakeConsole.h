@@ -14,4 +14,6 @@ class FakeConsole {
 		Rectangle blinker; 
 		char prompter; 
 		string inputText; 
+		unsigned int frameCounter; 
+		void checkForKeyPress(); 
 };
