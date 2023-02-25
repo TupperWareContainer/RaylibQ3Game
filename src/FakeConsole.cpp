@@ -16,6 +16,10 @@ FakeConsole::FakeConsole(int width, int height, Color color,Vector2 pos) {
 	blinker.x = background.x + background.width / 16; 
 	blinker.y = background.y + background.height / 16; 
 	frameCounter = 0;
+	dTextWidth = 0; 
+	pTextWidth = 0; 
+	cTextSize = 0; 
+	newLineNum = 0; 
 }
 void FakeConsole::render() {
 	checkForKeyPress(); 
@@ -32,32 +36,46 @@ void FakeConsole::render() {
 	
 }
 void FakeConsole::checkForKeyPress() {
-	
-	cout << (int)(background.width - (background.width / 16)) << endl;
-	cout << MeasureText(inputText.c_str(), 12) << endl;
-	int key = GetCharPressed(); 
-	if (key >= 32 && key <= 126) { // text size = 6; 
-		int textSize = 0; 
-		int textSize = MeasureText(inputText.c_str(), 13);
-		
-		int allotedWidth = (int)(background.width - (background.width / 16));
-		
-		if (textSize < allotedWidth) {
-			if (textSize > allotedWidth) {
-				inputText += "\n";
-				cout << "adding new line" << endl;
-			}
+	int allotedWidth = (int)(background.width - (background.width / 16));
+	cout << "\ninputText.size() " << inputText.size() << endl;
+	cout << "MeasureText input " << MeasureText(inputText.c_str(), 13) << endl;
+	cout << "writeOnlyText.size() " << writeOnlyText.size() << endl;
+	cout << "MeasureText writeonly " << MeasureText(writeOnlyText.c_str(), 13) << endl;
+	cout << "allotedWidth: " << allotedWidth << endl;
+	cout << "cTextSize: " << cTextSize << "\n" << endl;
 
-		}
+	int key = GetCharPressed(); 
+	if (key >= 32 && key <= 126) { // text size = 6;
+		int textSize = MeasureText(writeOnlyText.c_str(), 13);
+
+		dTextWidth = (textSize - pTextWidth); 
+		cTextSize += dTextWidth; 
 		
+		if (cTextSize >= allotedWidth) {
+			inputText += "\n";
+			cout << "adding new line" << endl;
+			newLineNum++; 
+			cTextSize = 0; 
+		}
+		pTextWidth = textSize; 
 		inputText += (char)key; 
+		writeOnlyText += (char)key; 
 		cout << "textSize % allotedWidth = " << textSize % allotedWidth << endl; 
 	}
 	if (IsKeyPressed(KEY_ENTER)) {
 		inputText += "\n"; 
 	}
 	if (IsKeyPressed(KEY_BACKSPACE) && inputText.size() > 0) {
+		if (inputText.at(inputText.size() - 1) == '\n') {
+			newLineNum--;
+		}
+		if (newLineNum > 0) {
+			cTextSize = MeasureText(writeOnlyText.c_str(), 13) / newLineNum;
+		}
+		writeOnlyText.pop_back();
+		writeOnlyText.shrink_to_fit();
 		inputText.pop_back(); 
 		inputText.shrink_to_fit(); 
+		
 	}
 }

@@ -14,6 +14,11 @@ class FakeConsole {
 		Rectangle blinker; 
 		char prompter; 
 		string inputText; 
+		string writeOnlyText; //used for text size calculations 
 		unsigned int frameCounter; 
+		int dTextWidth; 
+		int pTextWidth; 
+		int newLineNum; 
+		int cTextSize; 
 		void checkForKeyPress(); 
 };
