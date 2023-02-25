@@ -4,7 +4,7 @@
 #include "Gorb.h"
 #include <iostream>
 //@TODO: IMPLIMENT BASE STUFF
-
+using namespace std; 
 Base::Base() {
 	centPos = { 50.0f,50.0f }; 
 	capacity = 30; 
@@ -28,4 +28,16 @@ void Base::renderUnits() {
 	{
 		unit.Render();
 	}
+}
+string Base::getName() {
+	return name; 
+}
+int Base::getCapacity() {
+	return capacity; 
+}
+int Base::getNumGorbs() {
+	return gorbList.size(); 
+}
+int Base::getNumUnits() {
+	return unitList.size(); 
 }

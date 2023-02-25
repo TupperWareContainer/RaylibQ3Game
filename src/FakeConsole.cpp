@@ -1,9 +1,10 @@
 #include "FakeConsole.h"
+#include "ConsoleReader.h"
 #include <raylib.h>
 #include <iostream>
 using namespace std;
 
-FakeConsole::FakeConsole(int width, int height, Color color,Vector2 pos) {
+FakeConsole::FakeConsole(int width, int height, Color color,Vector2 pos,ConsoleReader* consoleReader) {
 	background.width = width; 
 	background.height = height; 
 	background.x = pos.x; 
@@ -20,6 +21,7 @@ FakeConsole::FakeConsole(int width, int height, Color color,Vector2 pos) {
 	pTextWidth = 0; 
 	cTextSize = 0; 
 	newLineNum = 0; 
+	cReader = consoleReader; 
 }
 void FakeConsole::render() {
 	checkForKeyPress(); 
@@ -58,19 +60,24 @@ void FakeConsole::checkForKeyPress() {
 		}
 		pTextWidth = textSize; 
 		displayText += (char)key; 
+		cLineText += (char)key;
 		writeOnlyText += (char)key; 
 	}
 	if (IsKeyPressed(KEY_ENTER)) {
 		displayText += "\n"; 
-
+		cReader->filterFakeConsoleInput(cLineText); 
+		cout << "outputing to cReader" << endl;
+		newLineNum++; 
+		cLineText.clear(); 
 	}
 	if (IsKeyPressed(KEY_BACKSPACE) && displayText.size() > 0) {
 		if (displayText.at(displayText.size() - 1) == '\n') {
 			newLineNum--;
 		}
-		
-		writeOnlyText.pop_back();
-		writeOnlyText.shrink_to_fit();
+		if (writeOnlyText.size() > 0) {
+			writeOnlyText.pop_back();
+			writeOnlyText.shrink_to_fit();
+		}
 		displayText.pop_back(); 
 		displayText.shrink_to_fit(); 
 		

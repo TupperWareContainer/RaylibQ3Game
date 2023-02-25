@@ -15,6 +15,10 @@ class Base {
 		void renderUnits(); 
 		void addUnit(int unitType, int startingCapacity, int posX, int posY); 
 		void addGorb(Gorb gorb); 
+		string getName(); 
+		int getCapacity(); 
+		int getNumGorbs(); 
+		int getNumUnits(); 
 
 	private:
 		string name; 

@@ -1,8 +1,7 @@
 c:\users\boxtr\documents\raylibq3game\x64\debug\vc142.pdb
 c:\users\boxtr\documents\raylibq3game\x64\debug\vc142.idb
-c:\users\boxtr\documents\raylibq3game\x64\debug\ui.obj
 c:\users\boxtr\documents\raylibq3game\x64\debug\uibutton.obj
-c:\users\boxtr\documents\raylibq3game\x64\debug\base.obj
+c:\users\boxtr\documents\raylibq3game\x64\debug\ui.obj
 c:\users\boxtr\documents\raylibq3game\x64\debug\main.obj
 c:\users\boxtr\documents\raylibq3game\x64\debug\gorb.obj
 c:\users\boxtr\documents\raylibq3game\x64\debug\fakeconsole.obj
@@ -10,10 +9,11 @@ c:\users\boxtr\documents\raylibq3game\x64\debug\consolereader.obj
 c:\users\boxtr\documents\raylibq3game\x64\debug\connectionmanager.obj
 c:\users\boxtr\documents\raylibq3game\x64\debug\connection.obj
 c:\users\boxtr\documents\raylibq3game\x64\debug\baseunit.obj
+c:\users\boxtr\documents\raylibq3game\x64\debug\base.obj
 c:\users\boxtr\documents\raylibq3game\x64\debug\basebuilder.exe
 c:\users\boxtr\documents\raylibq3game\x64\debug\basebuilder.ilk
 c:\users\boxtr\documents\raylibq3game\x64\debug\basebuilder.pdb
-c:\users\boxtr\documents\raylibq3game\x64\debug\fakeconsole.obj.enc
+c:\users\boxtr\documents\raylibq3game\x64\debug\ui.obj.enc
 c:\users\boxtr\documents\raylibq3game\x64\debug\basebuilder.tlog\cl.command.1.tlog
 c:\users\boxtr\documents\raylibq3game\x64\debug\basebuilder.tlog\cl.read.1.tlog
 c:\users\boxtr\documents\raylibq3game\x64\debug\basebuilder.tlog\cl.write.1.tlog

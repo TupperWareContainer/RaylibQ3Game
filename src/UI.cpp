@@ -2,8 +2,20 @@
 #include <iostream>
 #include <raylib.h>
 #include "UIButton.h"
+#include "Base.h"
+#include <sstream>
 
 using namespace std; 
+UI::UI() {
+	
+	buttonObjs[0] = UIButton("test", 50, 10);
+	buttonObjs[1] = UIButton("Move", 50, 10);
+	buttonObjs[2] = UIButton("Draw", 50, 10);
+	buttonObjs[0].setPos(50, 50);
+	buttonObjs[1].setPos(300, 300);
+	buttonObjs[2].setPos(300, 350);
+	uiMode = UIMODE::DEFAULT;
+}
 UI::UI(int allotedWidth, int allotedHeight) {
 	buttonObjs[0] = UIButton("test", 50, 10);
 	buttonObjs[1] = UIButton("Move", 50, 10); 
@@ -13,6 +25,7 @@ UI::UI(int allotedWidth, int allotedHeight) {
 	buttonObjs[2].setPos(300, 350); 
 	sectionWidth = allotedWidth; 
 	sectionHeight = allotedHeight; 
+	uiMode = UIMODE::DEFAULT; 
 }
 void UI::setButtonActive(int button, bool active) 
 {
@@ -42,17 +55,41 @@ void UI::printDefaultMenu() {
 	cout << "What would you like to do?" << endl; 
 	cout << "" << endl; 
 }
-void UI::drawUI(UIMODE UI) {
-	switch (UI)
+void UI::setMode(UIMODE mode) {
+	uiMode = mode; 
+	cout << "UIMODE change recieved" << endl; 
+}
+void UI::drawUI(Base b) {
+	switch (uiMode)
 	{
-	case UIMODE::TEST:
-		buttonObjs[0].drawButton(true); 
-		break;
-	case UIMODE::MOVE:
-		buttonObjs[0].drawButton(true); 
-	case UIMODE::DEFAULT:
-		DrawText("[L]ist Stats\n", sectionWidth / 16, sectionHeight / 16,15,BLACK); 
-	default:
-		break;
+		case UIMODE::TEST:
+			buttonObjs[0].drawButton(true); 
+			break;
+		case UIMODE::MOVE:
+			buttonObjs[0].drawButton(true); 
+			break; 
+		case UIMODE::DEFAULT:
+			DrawText("[L]ist Stats\n", sectionWidth / 16, sectionHeight / 16,15,BLACK); 
+			break; 
+		case UIMODE::STATS:
+		{ //what the fuck 
+			Font boldFont = LoadFont("./assets/fonts/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
+			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 100, 75, BLACK);
+			DrawTextEx(boldFont, "Stats:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0, RAYWHITE);
+			DrawTextEx(boldFont, ("Name: " + b.getName()).c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 15) }, 15, 0, LIME);
+			stringstream sStream; 
+			sStream << "Capacity: " << b.getCapacity();
+			DrawTextEx(boldFont, sStream.str().c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 30) }, 15, 0, LIME);
+			sStream.str("");
+			sStream << "Pops: " << b.getNumGorbs(); 
+			DrawTextEx(boldFont, sStream.str().c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 45) }, 15, 0, LIME); 
+			sStream.str("");
+			sStream << "Units: " << b.getNumUnits(); 
+
+			cout << "Rendering Stat Mode" << endl;
+			break;
+		}
+		default:
+			break;
 	}
 }

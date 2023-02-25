@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
 {
     SetTargetFPS(60); 
     cout << "debug testing sfzsfgsf" << (rand() % 101) << endl;
-    ConsoleReader cr = ConsoleReader(); 
+   
     Base base; 
    // BaseUnit bV[10]; 
     //ConnectionManager cm = ConnectionManager();
@@ -33,10 +33,11 @@ int main(int argc, char const *argv[])
     const int height = 400; 
     InitWindow(width,height,"Test"); 
     UI ui = UI(width / 2, height);
-    FakeConsole fakeConsole = FakeConsole(width / 2, height, BLACK, { width / 2.0f, 0 });
+    ConsoleReader cr = ConsoleReader(&ui);
+    ui.setMode(UIMODE::DEFAULT); 
+    FakeConsole fakeConsole = FakeConsole(width / 2, height, BLACK, { width / 2.0f, 0 },&cr);
     while(!WindowShouldClose()){
         BeginDrawing();
-        ui.drawUI(UIMODE::DEFAULT); 
         #pragma region Draw
         ClearBackground(BLUE);
         if (hasRendered == false) {
@@ -51,7 +52,7 @@ int main(int argc, char const *argv[])
             hasRendered = true;
 
         }
-
+        ui.drawUI(base);
         if (hasRendered) {
             fakeConsole.render(); 
             base.renderUnits(); 
