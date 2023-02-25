@@ -3,7 +3,7 @@
 #include <vector>
 //#include "ConnectionManager.h"
 #include <raylib.h> 
-//#include "UI.h"
+#include "UI.h"
 #include "FakeConsole.h"
 #include "ConsoleReader.h"
 #include "Base.h"
@@ -16,7 +16,6 @@ int main(int argc, char const *argv[])
 {
     SetTargetFPS(60); 
     cout << "debug testing sfzsfgsf" << (rand() % 101) << endl;
-   //UI ui; 
     ConsoleReader cr = ConsoleReader(); 
     Base base; 
    // BaseUnit bV[10]; 
@@ -33,9 +32,11 @@ int main(int argc, char const *argv[])
     const int width = 800;
     const int height = 400; 
     InitWindow(width,height,"Test"); 
+    UI ui = UI(width / 2, height);
     FakeConsole fakeConsole = FakeConsole(width / 2, height, BLACK, { width / 2.0f, 0 });
     while(!WindowShouldClose()){
         BeginDrawing();
+        ui.drawUI(UIMODE::DEFAULT); 
         #pragma region Draw
         ClearBackground(BLUE);
         if (hasRendered == false) {

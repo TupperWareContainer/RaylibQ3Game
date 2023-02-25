@@ -4,13 +4,15 @@
 #include "UIButton.h"
 
 using namespace std; 
-UI::UI() {
+UI::UI(int allotedWidth, int allotedHeight) {
 	buttonObjs[0] = UIButton("test", 50, 10);
 	buttonObjs[1] = UIButton("Move", 50, 10); 
 	buttonObjs[2] = UIButton("Draw", 50, 10); 
 	buttonObjs[0].setPos(50, 50); 
 	buttonObjs[1].setPos(300, 300); 
 	buttonObjs[2].setPos(300, 350); 
+	sectionWidth = allotedWidth; 
+	sectionHeight = allotedHeight; 
 }
 void UI::setButtonActive(int button, bool active) 
 {
@@ -48,6 +50,8 @@ void UI::drawUI(UIMODE UI) {
 		break;
 	case UIMODE::MOVE:
 		buttonObjs[0].drawButton(true); 
+	case UIMODE::DEFAULT:
+		DrawText("[L]ist Stats\n", sectionWidth / 16, sectionHeight / 16,15,BLACK); 
 	default:
 		break;
 	}

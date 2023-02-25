@@ -13,7 +13,7 @@ class FakeConsole {
 		Rectangle background; 
 		Rectangle blinker; 
 		char prompter; 
-		string inputText; 
+		string displayText; 
 		string writeOnlyText; //used for text size calculations 
 		unsigned int frameCounter; 
 		int dTextWidth; 
