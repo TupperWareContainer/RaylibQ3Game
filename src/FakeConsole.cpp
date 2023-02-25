@@ -59,7 +59,6 @@ void FakeConsole::checkForKeyPress() {
 		pTextWidth = textSize; 
 		displayText += (char)key; 
 		writeOnlyText += (char)key; 
-		cout << "textSize % allotedWidth = " << textSize % allotedWidth << endl; 
 	}
 	if (IsKeyPressed(KEY_ENTER)) {
 		displayText += "\n"; 
