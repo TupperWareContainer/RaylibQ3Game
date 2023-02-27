@@ -4,7 +4,6 @@
 #include "Gorb.h"
 #include <vector>
 #include <iostream>
-#include "MissionManager.h"
 
 
 using namespace std; 
@@ -17,11 +16,11 @@ class Base {
 		void renderUnits(); 
 		void addUnit(int unitType, int startingCapacity, int posX, int posY); 
 		void addGorb(Gorb gorb); 
+		void addMoney(int amt); 
 		string getName(); 
 		int getCapacity(); 
 		int getNumGorbs(); 
 		int getNumUnits(); 
-		MissionManager getMissionManager(); 
 
 	private:
 		string name; 
@@ -29,7 +28,7 @@ class Base {
 		vector<Gorb> gorbList; 
 		Vector2 centPos;
 		int capacity; 
-		MissionManager missionManager; 
+		int money; 
 		//Resource resources[3]; 
 		
 };

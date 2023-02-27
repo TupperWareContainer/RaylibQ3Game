@@ -1,2 +1,4 @@
 ﻿  MissionManager.cpp
-  BaseBuilder.vcxproj -> C:\Users\boxtr\Documents\RaylibQ3Game\x64\Debug\BaseBuilder.exe
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+MissionManager.obj : error LNK2019: unresolved external symbol "public: void __cdecl Timer::setTimeout<class <lambda_7d6bdb2f5a611b9333717dc2366088ab> >(class <lambda_7d6bdb2f5a611b9333717dc2366088ab>,int)" (??$setTimeout@V<lambda_7d6bdb2f5a611b9333717dc2366088ab>@@@Timer@@QEAAXV<lambda_7d6bdb2f5a611b9333717dc2366088ab>@@H@Z) referenced in function "public: void __cdecl MissionManager::runMission(int,class Base)" (?runMission@MissionManager@@QEAAXHVBase@@@Z)
+E:\VGD\JohnF\RaylibQ3Game\x64\Debug\BaseBuilder.exe : fatal error LNK1120: 1 unresolved externals

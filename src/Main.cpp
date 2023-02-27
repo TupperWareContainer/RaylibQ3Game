@@ -8,6 +8,7 @@
 #include "ConsoleReader.h"
 #include "Base.h"
 #include "BaseUnit.h" 
+#include "MissionManager.h"
 #include <stdlib.h>
 using namespace std; 
 
@@ -33,7 +34,8 @@ int main(int argc, char const *argv[])
     const int height = 400; 
     InitWindow(width,height,"Test"); 
     UI ui = UI(width / 2, height);
-    ConsoleReader cr = ConsoleReader(&ui);
+    MissionManager m = MissionManager();
+    ConsoleReader cr = ConsoleReader(&ui, &m,&base);
     ui.setMode(UIMODE::DEFAULT); 
     FakeConsole fakeConsole = FakeConsole(width / 2, height, BLACK, { width / 2.0f, 0 },&cr);
     while(!WindowShouldClose()){
@@ -50,12 +52,11 @@ int main(int argc, char const *argv[])
             cout << baseCapacity << endl;
             base = Base(30, baseName,width / 2,height);
             hasRendered = true;
-
         }
         if (hasRendered) {
             fakeConsole.render(); 
             base.renderUnits(); 
-            ui.drawUI(base);
+            ui.drawUI(base,m);
 #pragma region deprecated
 
 

@@ -1,15 +1,18 @@
 #include "ConsoleReader.h"
 #include "UI.h"
 #include <iostream>
+#include "MissionManager.h"
 
 using namespace std; 
 
 ConsoleReader::ConsoleReader() {
 	cout << "Console Reader Initialized!" << endl;
 }
-ConsoleReader::ConsoleReader(UI* uiObj) {
+ConsoleReader::ConsoleReader(UI* uiObj, MissionManager* mObj, Base* bObj) {
 	cout << "Console Reader Initialized!" << endl; 
 	this->uiObj = uiObj; 
+	this->mObj = mObj;
+	this->bObj = bObj; 
 }
 
 string ConsoleReader::getInput() {
@@ -30,6 +33,14 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 			break; 
 		default:
 			break;
+	}
+	switch (uiObj->getMode()) {
+		case 4: {
+			int num = int(consoleInput.at(0)) - 48;
+			if (num <= 4) {
+				mObj->runMission(num, *bObj); 
+			}
+		}
 	}
 }
 

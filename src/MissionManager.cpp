@@ -1,6 +1,9 @@
 #include "MissionManager.h"
 #include "Mission.h"
 #include <raylib.h>
+#include "Base.h"
+#include "Timer.h"
+
 
 MissionManager::MissionManager(){
 	generateMissions(); 
@@ -30,4 +33,17 @@ std::string MissionManager::getMissionStrings() {
 		i++; 
 	}
 	return output; 
+}
+void MissionManager::completeMission(int missionNum, Base b) {
+	b.addMoney(missionList[missionNum].getMoneyReward());
+	std::cout << "Mission Complete" << std::endl; 
+}
+void MissionManager::runMission(int missionNum,Base b) {
+	t = Timer();
+	//"https://wandbox.org/permlink/trAtIpH348q393w9" 
+	//https://www.fluentcpp.com/2018/12/28/timer-cpp/
+	t.setTimeout([&]() { 
+		completeMission(missionNum, b); 
+		t.stop(); }, (int)missionList[missionNum].getTimeToComplete());
+	std::cout << "Completing mission in " << missionList[missionNum].getTimeToComplete() << " seconds" << std::endl; 
 }

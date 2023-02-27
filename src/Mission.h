@@ -1,6 +1,8 @@
 #pragma once
 #include <raylib.h>
 #include <iostream>
+#include <sstream>
+
 enum class MissionType
 {
 	ResourceGather = 1,
@@ -18,10 +20,12 @@ public:
 	Mission(MissionType missionType, double timeToComplete, Difficulty difficulty);
 	int getDifficulty(); 
 	int getMissionType(); 
-	double getTimeToComplete(); 
+	double getTimeToComplete();
+	int getMoneyReward(); 
 	std::string toString(); 
 private:
 	MissionType missionType;
 	double timeToComplete;
 	Difficulty difficulty;
+	int moneyReward; 
 };

@@ -4,15 +4,16 @@
 #include <sstream>
 #include "UIButton.h"
 #include "Base.h"
-#include "GameFonts.h"; 
+#include "GameFonts.h" 
+#include "MissionManager.h"
 
 using namespace std; 
 enum class UIMODE {
-	TEST,
-	MOVE,
-	DEFAULT,
-	STATS,
-	MISSION
+	TEST = 0,
+	MOVE = 1,
+	DEFAULT = 2,
+	STATS = 3,
+	MISSION = 4
 };
 class UI {
 public: 
@@ -22,9 +23,10 @@ public:
 	void setButtonActive(int,bool);
 	void drawUIButtons();
 	UIButton getButton(int); 
-	void drawUI(Base b);
+	void drawUI(Base b, MissionManager m);
 	void setMode(UIMODE mode);
 	void printDefaultMenu(); 
+	int getMode();
 private:
 	bool buttons[10];
 	UIButton buttonObjs[10]; 

@@ -9,7 +9,7 @@ using namespace std;
 Base::Base() {
 	centPos = { 50.0f,50.0f }; 
 	capacity = 30; 
-
+	money = 0; 
 }
 Base::Base(int startingCapacity, string name,int winHeight,int winWidth) {
 	capacity = startingCapacity; 
@@ -22,8 +22,8 @@ Base::Base(int startingCapacity, string name,int winHeight,int winWidth) {
 	centPos = { (float)winWidth / 2.0f, (float)winHeight / 2.0f }; 
 	this->name = name; 
 	std::cout << "adding command unit" << endl; 
-	missionManager = MissionManager(); 
 	unitList.push_back(BaseUnit(UNITTYPE::Command, startingCapacity, (int)centPos.x, (int)centPos.y)); 
+	money = 0;
 }
 void Base::renderUnits() {
 	for each (BaseUnit unit in unitList)
@@ -43,6 +43,6 @@ int Base::getNumGorbs() {
 int Base::getNumUnits() {
 	return unitList.size(); 
 }
-MissionManager Base::getMissionManager(){
-	return missionManager; 
+void Base::addMoney(int amt) {
+	money += amt; 
 }

@@ -1,16 +1,19 @@
 #include "Mission.h"
 #include <raylib.h> 
 #include <iostream>
+#include <sstream>
 
 Mission::Mission() {
 	missionType = MissionType::DefenseContract; 
 	difficulty = Difficulty::Easy; 
 	timeToComplete = 10; 
+	moneyReward = (static_cast<int>(difficulty) * static_cast<int>(missionType)) * 1500;
 }
 Mission::Mission(MissionType missionType, double timeToComplete, Difficulty difficulty) {
 	this->missionType = missionType; 
 	this->difficulty = difficulty; 
 	this->timeToComplete = timeToComplete;
+	moneyReward = (static_cast<int>(difficulty) * static_cast<int>(missionType)) * 1500; 
 }
 int Mission::getDifficulty() {
 	return (int)difficulty; 
@@ -52,6 +55,11 @@ std::string Mission::toString() {
 		default:
 			break;
 	}
-	output += "]"; 
+	std::stringstream sStream; 
+	sStream << output << " || " << moneyReward << "]";
+	output = sStream.str(); 
 	return output; 
+}
+int Mission::getMoneyReward() {
+	return moneyReward; 
 }

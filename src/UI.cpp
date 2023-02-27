@@ -1,9 +1,11 @@
 #include "UI.h"
 #include <iostream>
 #include <raylib.h>
+#include <sstream>
 #include "UIButton.h"
 #include "Base.h"
-#include <sstream>
+#include "GameFonts.h"; 
+#include "MissionManager.h"
 
 using namespace std; 
 UI::UI() {
@@ -59,7 +61,7 @@ void UI::setMode(UIMODE mode) {
 	uiMode = mode; 
 	cout << "UIMODE change recieved" << endl; 
 }
-void UI::drawUI(Base b) {
+void UI::drawUI(Base b,MissionManager m) {
 	switch (uiMode)
 	{
 		case UIMODE::TEST:
@@ -91,13 +93,15 @@ void UI::drawUI(Base b) {
 		}
 		case UIMODE::MISSION:
 		{
-			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 200,130, BLACK);
+			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 250,130, BLACK);
 			DrawTextEx(g.boldFont, "Missions:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0, RED);
-			DrawTextEx(g.boldFont, b.getMissionManager().getMissionStrings().c_str(), { (float)sectionWidth / 16, (float)sectionHeight / 16 +15}, 15, 0, LIME);
+			DrawTextEx(g.boldFont, m.getMissionStrings().c_str(), { (float)sectionWidth / 16, (float)sectionHeight / 16 +15}, 15, 0, LIME);
 			break; 
 		}
-
 		default:
 			break;
 	}
+}
+int UI::getMode() {
+	return static_cast<int>(uiMode); 
 }
