@@ -25,9 +25,11 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 		case 'E':
 			uiObj->setMode(UIMODE::DEFAULT);
 			break; 
-		
+		case 'M':
+			uiObj->setMode(UIMODE::MISSION); 
+			break; 
 		default:
-		break;
+			break;
 	}
 }
 

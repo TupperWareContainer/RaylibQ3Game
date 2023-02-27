@@ -2,6 +2,7 @@
 //#include "Resource.h"
 #include "Base.h"
 #include "Gorb.h"
+#include "MissionManager.h"
 #include <iostream>
 //@TODO: IMPLIMENT BASE STUFF
 using namespace std; 
@@ -21,6 +22,7 @@ Base::Base(int startingCapacity, string name,int winHeight,int winWidth) {
 	centPos = { (float)winWidth / 2.0f, (float)winHeight / 2.0f }; 
 	this->name = name; 
 	std::cout << "adding command unit" << endl; 
+	missionManager = MissionManager(); 
 	unitList.push_back(BaseUnit(UNITTYPE::Command, startingCapacity, (int)centPos.x, (int)centPos.y)); 
 }
 void Base::renderUnits() {
@@ -40,4 +42,7 @@ int Base::getNumGorbs() {
 }
 int Base::getNumUnits() {
 	return unitList.size(); 
+}
+MissionManager Base::getMissionManager(){
+	return missionManager; 
 }

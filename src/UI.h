@@ -1,15 +1,18 @@
 #pragma once
 #include <iostream>
 #include <raylib.h>
+#include <sstream>
 #include "UIButton.h"
 #include "Base.h"
-#include <sstream>
+#include "GameFonts.h"; 
+
 using namespace std; 
 enum class UIMODE {
 	TEST,
 	MOVE,
 	DEFAULT,
-	STATS
+	STATS,
+	MISSION
 };
 class UI {
 public: 
@@ -29,5 +32,6 @@ private:
 	//void drawButton(int);
 	int sectionWidth; 
 	int sectionHeight;
+	GameFonts g; 
 };
 

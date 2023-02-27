@@ -52,10 +52,10 @@ int main(int argc, char const *argv[])
             hasRendered = true;
 
         }
-        ui.drawUI(base);
         if (hasRendered) {
             fakeConsole.render(); 
             base.renderUnits(); 
+            ui.drawUI(base);
 #pragma region deprecated
 
 

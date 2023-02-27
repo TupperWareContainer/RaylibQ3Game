@@ -69,26 +69,34 @@ void UI::drawUI(Base b) {
 			buttonObjs[0].drawButton(true); 
 			break; 
 		case UIMODE::DEFAULT:
-			DrawText("[L]ist Stats\n", sectionWidth / 16, sectionHeight / 16,15,BLACK); 
+			DrawText("[L]ist Stats\n[M]issions\n[B]ase Development", sectionWidth / 16, sectionHeight / 16,15,BLACK); 
 			break; 
 		case UIMODE::STATS:
 		{ //what the fuck 
-			Font boldFont = LoadFont("./assets/fonts/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
+			
 			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 100, 75, BLACK);
-			DrawTextEx(boldFont, "Stats:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0, RAYWHITE);
-			DrawTextEx(boldFont, ("Name: " + b.getName()).c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 15) }, 15, 0, LIME);
+			DrawTextEx(g.boldFont, "Stats:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0, BLUE);
+			DrawTextEx(g.boldFont, ("Name: " + b.getName()).c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 15) }, 15, 0, LIME);
 			stringstream sStream; 
 			sStream << "Capacity: " << b.getCapacity();
-			DrawTextEx(boldFont, sStream.str().c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 30) }, 15, 0, LIME);
+			DrawTextEx(g.boldFont, sStream.str().c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 30) }, 15, 0, LIME);
 			sStream.str("");
 			sStream << "Pops: " << b.getNumGorbs(); 
-			DrawTextEx(boldFont, sStream.str().c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 45) }, 15, 0, LIME); 
+			DrawTextEx(g.boldFont, sStream.str().c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 45) }, 15, 0, LIME); 
 			sStream.str("");
 			sStream << "Units: " << b.getNumUnits(); 
 
 			cout << "Rendering Stat Mode" << endl;
 			break;
 		}
+		case UIMODE::MISSION:
+		{
+			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 200,130, BLACK);
+			DrawTextEx(g.boldFont, "Missions:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0, RED);
+			DrawTextEx(g.boldFont, b.getMissionManager().getMissionStrings().c_str(), { (float)sectionWidth / 16, (float)sectionHeight / 16 +15}, 15, 0, LIME);
+			break; 
+		}
+
 		default:
 			break;
 	}

@@ -106,6 +106,8 @@
     <ClCompile Include="src\Gorb.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Base.cpp" />
+    <ClCompile Include="src\Mission.cpp" />
+    <ClCompile Include="src\MissionManager.cpp" />
     <ClCompile Include="src\UIButton.cpp" />
     <ClCompile Include="src\UI.cpp" />
   </ItemGroup>
@@ -116,7 +118,10 @@
     <ClInclude Include="src\ConnectionManager.h" />
     <ClInclude Include="src\ConsoleReader.h" />
     <ClInclude Include="src\FakeConsole.h" />
+    <ClInclude Include="src\GameFonts.h" />
     <ClInclude Include="src\Gorb.h" />
+    <ClInclude Include="src\Mission.h" />
+    <ClInclude Include="src\MissionManager.h" />
     <ClInclude Include="src\Resource.h" />
     <ClInclude Include="src\UIButton.h" />
     <ClInclude Include="src\UI.h" />
