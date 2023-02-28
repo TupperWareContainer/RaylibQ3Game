@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\x64\\Debug"
+    "\\src"
   ],
-  "SelectedNode": "\\src\\BaseUnit.h",
+  "SelectedNode": "\\src\\Mission.cpp",
   "PreviewInSolutionExplorer": false
 }

@@ -2,8 +2,8 @@
 #include "Mission.h"
 #include <raylib.h>
 #include "Base.h"
-#include "Timer.h"
-
+#include <future>
+#include <chrono>
 
 MissionManager::MissionManager(){
 	generateMissions(); 
@@ -39,11 +39,11 @@ void MissionManager::completeMission(int missionNum, Base b) {
 	std::cout << "Mission Complete" << std::endl; 
 }
 void MissionManager::runMission(int missionNum,Base b) {
-	t = Timer();
-	//"https://wandbox.org/permlink/trAtIpH348q393w9" 
-	//https://www.fluentcpp.com/2018/12/28/timer-cpp/
-	t.setTimeout([&]() { 
+	std::chrono::seconds missionTime((long)missionList[missionNum].getTimeToComplete()); 
+	auto timer = std::async(std::launch::async, [=]() {
+		std::this_thread::sleep_for(std::chrono::seconds(missionTime)); 
 		completeMission(missionNum, b); 
-		t.stop(); }, (int)missionList[missionNum].getTimeToComplete());
+	});
+	timer.wait(); 
 	std::cout << "Completing mission in " << missionList[missionNum].getTimeToComplete() << " seconds" << std::endl; 
 }

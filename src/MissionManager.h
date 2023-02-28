@@ -3,7 +3,8 @@
 #include "Mission.h"
 #include <raylib.h>
 #include "Base.h"
-#include "Timer.h"
+#include <future>
+#include <chrono>
 
 #define VISIBLE_MISSIONS 5; 
 class MissionManager {
@@ -16,5 +17,5 @@ class MissionManager {
 	private:
 		Mission missionList[5]; // there can only be 5 active missions at a time
 		void generateMissions();
-		Timer t; 
+ 
 };
