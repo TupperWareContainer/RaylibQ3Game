@@ -3,8 +3,10 @@
 #include <iostream>
 #include <sstream>
 
+
 enum class MissionType
 {
+	Null,
 	ResourceGather = 1,
 	DefenseContract = 2,
 	RaidRival = 3 

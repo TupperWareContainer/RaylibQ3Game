@@ -38,7 +38,7 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 		case 4: {
 			int num = int(consoleInput.at(0)) - 48;
 			if (num <= 4) {
-				mObj->runMission(num, *bObj); 
+				mObj->runMission(num, bObj); 
 			}
 		}
 	}

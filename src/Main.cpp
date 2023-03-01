@@ -12,7 +12,6 @@
 #include <stdlib.h>
 using namespace std; 
 
-// TODO: Impliment connection backend
 int main(int argc, char const *argv[])
 {
     SetTargetFPS(60); 

@@ -4,6 +4,7 @@
 #include "Base.h"
 #include <future>
 #include <chrono>
+#include <thread>
 
 MissionManager::MissionManager(){
 	generateMissions(); 
@@ -19,6 +20,7 @@ void MissionManager::generateMissions() {
 		randTime = rand() % 15 + 1;
 		missionList[i] = Mission(static_cast<MissionType>(randType), (double)randTime, static_cast<Difficulty>(randDiff));
 	}
+	nullMission = Mission(); 
 }
 std::string MissionManager::getMissionStrings() {
 	std::string output = ""; 
@@ -35,15 +37,17 @@ std::string MissionManager::getMissionStrings() {
 	return output; 
 }
 void MissionManager::completeMission(int missionNum, Base b) {
-	b.addMoney(missionList[missionNum].getMoneyReward());
-	std::cout << "Mission Complete" << std::endl; 
 }
-void MissionManager::runMission(int missionNum,Base b) {
-	std::chrono::seconds missionTime((long)missionList[missionNum].getTimeToComplete()); 
-	auto timer = std::async(std::launch::async, [=]() {
-		std::this_thread::sleep_for(std::chrono::seconds(missionTime)); 
-		completeMission(missionNum, b); 
-	});
-	timer.wait(); 
-	std::cout << "Completing mission in " << missionList[missionNum].getTimeToComplete() << " seconds" << std::endl; 
+void MissionManager::runMission(int missionNum,Base* b) {
+	std::cout << "started timer at: " << GetTime() << std::endl; 
+	std::chrono::seconds missionTime((long)missionList[missionNum].getTimeToComplete());
+	std::thread([=]() {
+		std::cout <<"\nstarting timer for " << (long)missionList[missionNum].getTimeToComplete() << " seconds" << std::endl;
+		std::this_thread::sleep_for(missionTime); 
+		completeMission(missionNum, *b); 
+		std::cout << "ended timer at: " << GetTime() << std::endl;
+	}).detach();
+	
+	
+	
 }

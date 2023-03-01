@@ -4,7 +4,7 @@
 #include <sstream>
 
 Mission::Mission() {
-	missionType = MissionType::DefenseContract; 
+	missionType = MissionType::Null; 
 	difficulty = Difficulty::Easy; 
 	timeToComplete = 10; 
 	moneyReward = (static_cast<int>(difficulty) * static_cast<int>(missionType)) * 1500;
@@ -26,39 +26,41 @@ double Mission::getTimeToComplete() {
 }
 std::string Mission::toString() {
 	std::string output = "["; 
-
-	switch (missionType) {
+	if (missionType != MissionType::Null) {
+		switch (missionType) {
 		case MissionType::DefenseContract:
-			output += "Defense Contract"; 
-			break; 
+			output += "Defense Contract";
+			break;
 		case MissionType::ResourceGather:
-			output += "Gather Resources"; 
-			break; 
+			output += "Gather Resources";
+			break;
 		case MissionType::RaidRival:
-			output += "Raid Rival"; 
-			break; 
-		default:
-			break; 
-	}
-	output += " || "; 
-	switch (difficulty)
-	{
-		case Difficulty::Easy:
-			output += "Easy"; 
-			break; 
-		case Difficulty::Moderate:
-			output += "Moderate"; 
-			break; 
-		case Difficulty::Hard: 
-			output += "Hard"; 
-			break; 
+			output += "Raid Rival";
+			break;
 		default:
 			break;
+		}
+		output += " || ";
+		switch (difficulty)
+		{
+		case Difficulty::Easy:
+			output += "Easy";
+			break;
+		case Difficulty::Moderate:
+			output += "Moderate";
+			break;
+		case Difficulty::Hard:
+			output += "Hard";
+			break;
+		default:
+			break;
+		}
+		std::stringstream sStream;
+		sStream << output << " || " << moneyReward << "]";
+		output = sStream.str();
+		return output;
 	}
-	std::stringstream sStream; 
-	sStream << output << " || " << moneyReward << "]";
-	output = sStream.str(); 
-	return output; 
+	return " "; 
 }
 int Mission::getMoneyReward() {
 	return moneyReward; 
