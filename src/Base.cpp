@@ -22,7 +22,7 @@ Base::Base(int startingCapacity, string name,int winHeight,int winWidth) {
 	centPos = { (float)winWidth / 2.0f, (float)winHeight / 2.0f }; 
 	this->name = name; 
 	std::cout << "adding command unit" << endl; 
-	unitList.push_back(BaseUnit(UNITTYPE::Command, startingCapacity, (int)centPos.x, (int)centPos.y)); 
+	unitList[0] = (BaseUnit(UNITTYPE::Command, startingCapacity, (int)centPos.x, (int)centPos.y)); 
 	money = 0;
 }
 void Base::renderUnits() {
@@ -34,6 +34,9 @@ void Base::renderUnits() {
 string Base::getName() {
 	return name; 
 }
+BaseUnit* Base::getBaseUnits() {
+	return unitList; 
+}
 int Base::getCapacity() {
 	return capacity; 
 }
@@ -41,8 +44,26 @@ int Base::getNumGorbs() {
 	return gorbList.size(); 
 }
 int Base::getNumUnits() {
-	return unitList.size(); 
+	int numUnits = 0;
+	for (int i = 0; i < sizeof(unitList); i++) {
+		if (&unitList[i] != nullptr) {
+			numUnits++;
+		}
+	}
+	return numUnits; 
+}
+Vector2 Base::getCentPos() {
+	return centPos; 
+}
+void Base::addUnit(BaseUnit b) {
+	int unitType = b.getType(); 
+	std::cout << "b.getType(): " << b.getType() << endl; 
+	unitList[unitType] = b; 
+
 }
 void Base::addMoney(int amt) {
 	money += amt; 
+}
+int Base::getMoney() {
+	return money; 
 }

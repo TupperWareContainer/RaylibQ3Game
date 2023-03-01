@@ -34,7 +34,8 @@ int main(int argc, char const *argv[])
     InitWindow(width,height,"Test"); 
     UI ui = UI(width / 2, height);
     MissionManager m = MissionManager();
-    ConsoleReader cr = ConsoleReader(&ui, &m,&base);
+    BaseDev baseDev;
+    ConsoleReader cr = ConsoleReader(&ui, &m,&base,&baseDev);
     ui.setMode(UIMODE::DEFAULT); 
     FakeConsole fakeConsole = FakeConsole(width / 2, height, BLACK, { width / 2.0f, 0 },&cr);
     while(!WindowShouldClose()){
@@ -51,11 +52,12 @@ int main(int argc, char const *argv[])
             cout << baseCapacity << endl;
             base = Base(30, baseName,width / 2,height);
             hasRendered = true;
+            baseDev = BaseDev(10l,base); 
         }
         if (hasRendered) {
             fakeConsole.render(); 
             base.renderUnits(); 
-            ui.drawUI(base,m);
+            ui.drawUI(base,m,baseDev);
 #pragma region deprecated
 
 

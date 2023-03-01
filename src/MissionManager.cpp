@@ -36,7 +36,9 @@ std::string MissionManager::getMissionStrings() {
 	}
 	return output; 
 }
-void MissionManager::completeMission(int missionNum, Base b) {
+void MissionManager::completeMission(int missionNum, Base *b) {
+	b->addMoney(missionList[missionNum].getMoneyReward()); 
+	missionList[missionNum] = nullMission; 
 }
 void MissionManager::runMission(int missionNum,Base* b) {
 	std::cout << "started timer at: " << GetTime() << std::endl; 
@@ -44,7 +46,7 @@ void MissionManager::runMission(int missionNum,Base* b) {
 	std::thread([=]() {
 		std::cout <<"\nstarting timer for " << (long)missionList[missionNum].getTimeToComplete() << " seconds" << std::endl;
 		std::this_thread::sleep_for(missionTime); 
-		completeMission(missionNum, *b); 
+		completeMission(missionNum, b); 
 		std::cout << "ended timer at: " << GetTime() << std::endl;
 	}).detach();
 	

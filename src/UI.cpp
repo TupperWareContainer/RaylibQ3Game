@@ -5,6 +5,7 @@
 #include "UIButton.h"
 #include "Base.h"
 #include "GameFonts.h"; 
+#include "BaseUnit.h"
 #include "MissionManager.h"
 
 using namespace std; 
@@ -61,7 +62,7 @@ void UI::setMode(UIMODE mode) {
 	uiMode = mode; 
 	cout << "UIMODE change recieved" << endl; 
 }
-void UI::drawUI(Base b,MissionManager m) {
+void UI::drawUI(Base b,MissionManager m,BaseDev baseDev) {
 	switch (uiMode)
 	{
 		case UIMODE::TEST:
@@ -76,7 +77,7 @@ void UI::drawUI(Base b,MissionManager m) {
 		case UIMODE::STATS:
 		{ //what the fuck 
 			
-			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 100, 75, BLACK);
+			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 100, 100, BLACK);
 			DrawTextEx(g.boldFont, "Stats:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0, BLUE);
 			DrawTextEx(g.boldFont, ("Name: " + b.getName()).c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 15) }, 15, 0, LIME);
 			stringstream sStream; 
@@ -87,15 +88,26 @@ void UI::drawUI(Base b,MissionManager m) {
 			DrawTextEx(g.boldFont, sStream.str().c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 45) }, 15, 0, LIME); 
 			sStream.str("");
 			sStream << "Units: " << b.getNumUnits(); 
-
+			DrawTextEx(g.boldFont, sStream.str().c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 60) }, 15, 0, LIME);
+			sStream.str(""); 
+			sStream << "Money: " << b.getMoney(); 
+			DrawTextEx(g.boldFont, sStream.str().c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16 + 75) }, 15, 0, LIME);
+			sStream.str(""); 
 			cout << "Rendering Stat Mode" << endl;
 			break;
 		}
 		case UIMODE::MISSION:
 		{
-			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 250,130, BLACK);
+			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 270,130, BLACK);
 			DrawTextEx(g.boldFont, "Missions:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0, RED);
 			DrawTextEx(g.boldFont, m.getMissionStrings().c_str(), { (float)sectionWidth / 16, (float)sectionHeight / 16 +15}, 15, 0, LIME);
+			break; 
+		}
+		case UIMODE::UNITBUILDER:
+		{
+			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 270, 130, BLACK);
+			DrawTextEx(g.boldFont, "Units:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0, ORANGE);
+			DrawTextEx(g.boldFont, baseDev.getUnitStrings().c_str(), { (float)sectionWidth / 16, (float)sectionHeight / 16 + 15 }, 15, 0, LIME);
 			break; 
 		}
 		default:

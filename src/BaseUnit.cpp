@@ -19,6 +19,7 @@ BaseUnit::BaseUnit() {
 }
 BaseUnit::BaseUnit(UNITTYPE unitType, int startingCapacity, int posX, int posY) {
 	this->unitType =static_cast<int>(unitType); 
+	cout << "creating unit of type " << this->unitType << endl; 
 	pos.x = posX; 
 	pos.y = posY; 
 	capacity = startingCapacity; 
@@ -79,7 +80,7 @@ void BaseUnit::Render()
 			path = "./assets/images/Medical.png"; 
 			break; 
 		default:
-			path = "./assets/images/Placeholder.png";
+			return; 
 			break;
 	}
 
@@ -141,4 +142,34 @@ Rectangle BaseUnit::getRect() {
 bool BaseUnit::equals(BaseUnit baseUnit) {
 	bool output = (baseUnit.getCapacity() == getCapacity()) && (baseUnit.getLevel() == getLevel()) && (baseUnit.getType() == getType()); 
 	return output; 
+}
+std::string BaseUnit::toString() {
+	if (unitType == 5) {
+		return ""; 
+	}
+	std::string output = ""; 
+	output += "[UNIT: ";
+	switch (unitType) {
+		case 0:
+			output += "Command || ";
+			break; 
+		case 1:
+			output += "Research || ";
+			break;
+		case 2:
+			output += "Support || ";
+			break;
+		case 3:
+			output += "Combat || ";
+			break;
+		case 4:
+			output += "Medical || ";
+			break;
+	}
+	output += "CAPACITY: "; 
+	
+	output += to_string(capacity);
+	output += "]";
+	//cout << output << endl; 
+	return output; ;
 }

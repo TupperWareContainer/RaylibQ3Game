@@ -98,6 +98,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\BaseDev.cpp" />
     <ClCompile Include="src\BaseUnit.cpp" />
     <ClCompile Include="src\Connection.cpp" />
     <ClCompile Include="src\ConnectionManager.cpp" />
@@ -113,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Base.h" />
+    <ClInclude Include="src\BaseDev.h" />
     <ClInclude Include="src\BaseUnit.h" />
     <ClInclude Include="src\Connection.h" />
     <ClInclude Include="src\ConnectionManager.h" />

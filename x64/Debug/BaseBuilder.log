@@ -1,23 +1,2 @@
-﻿  BaseUnit.cpp
-  Connection.cpp
-C:\Users\boxtr\Documents\RaylibQ3Game\src\Connection.cpp(1,21): warning C4081: expected '('; found 'newline'
-C:\Users\boxtr\Documents\RaylibQ3Game\src\Connection.h(2,20): warning C4081: expected '('; found 'newline'
-  ConnectionManager.cpp
-C:\Users\boxtr\Documents\RaylibQ3Game\src\Connection.h(2,20): warning C4081: expected '('; found 'newline'
-  ConsoleReader.cpp
-C:\Users\boxtr\Documents\RaylibQ3Game\src\GameFonts.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  FakeConsole.cpp
-C:\Users\boxtr\Documents\RaylibQ3Game\src\GameFonts.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Gorb.cpp
-  Main.cpp
-C:\Users\boxtr\Documents\RaylibQ3Game\src\GameFonts.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Base.cpp
-  Mission.cpp
-  MissionManager.cpp
-  UIButton.cpp
-  UI.cpp
-C:\Users\boxtr\Documents\RaylibQ3Game\src\GameFonts.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\boxtr\Documents\RaylibQ3Game\src\UI.cpp(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Generating Code...
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  BaseBuilder.vcxproj -> C:\Users\boxtr\Documents\RaylibQ3Game\x64\Debug\BaseBuilder.exe
+﻿  BaseDev.cpp
+  BaseBuilder.vcxproj -> E:\VGD\JohnF\RaylibQ3Game\x64\Debug\BaseBuilder.exe

@@ -55,9 +55,9 @@ std::string Mission::toString() {
 		default:
 			break;
 		}
-		std::stringstream sStream;
-		sStream << output << " || " << moneyReward << "]";
-		output = sStream.str();
+		output += " || "; 
+		output += std::to_string(moneyReward); 
+		output += "]"; 
 		return output;
 	}
 	return " "; 

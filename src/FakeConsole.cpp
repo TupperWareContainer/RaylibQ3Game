@@ -68,7 +68,7 @@ void FakeConsole::checkForKeyPress() {
 		cReader->filterFakeConsoleInput(cLineText); 
 		cout << "outputing to cReader" << endl;
 		newLineNum++; 
-		cLineText.clear(); 
+		cLineText.clear();
 	}
 	if (IsKeyPressed(KEY_BACKSPACE) && displayText.size() > 0) {
 		if (displayText.at(displayText.size() - 1) == '\n') {

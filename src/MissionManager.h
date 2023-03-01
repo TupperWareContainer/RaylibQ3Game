@@ -12,7 +12,7 @@ class MissionManager {
 	public: 
 		MissionManager();
 		std::string getMissionStrings(); 
-		void completeMission(int missionNum, Base b);
+		void completeMission(int missionNum, Base *b);
 		void runMission(int missionNum,Base* b); 
 		
 	private:

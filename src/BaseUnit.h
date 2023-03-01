@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Gorb.h"
 #include <vector>
+#include <sstream>
 
 enum class UNITTYPE
 {
@@ -36,6 +37,7 @@ class BaseUnit {
 		bool checkVald(); 
 		bool equals(BaseUnit); 
 		Rectangle getRect(); 
+		std::string toString(); 
 	
 
 	private:
