@@ -100,8 +100,6 @@
   <ItemGroup>
     <ClCompile Include="src\BaseDev.cpp" />
     <ClCompile Include="src\BaseUnit.cpp" />
-    <ClCompile Include="src\Connection.cpp" />
-    <ClCompile Include="src\ConnectionManager.cpp" />
     <ClCompile Include="src\ConsoleReader.cpp" />
     <ClCompile Include="src\FakeConsole.cpp" />
     <ClCompile Include="src\Gorb.cpp" />
@@ -116,8 +114,6 @@
     <ClInclude Include="src\Base.h" />
     <ClInclude Include="src\BaseDev.h" />
     <ClInclude Include="src\BaseUnit.h" />
-    <ClInclude Include="src\Connection.h" />
-    <ClInclude Include="src\ConnectionManager.h" />
     <ClInclude Include="src\ConsoleReader.h" />
     <ClInclude Include="src\FakeConsole.h" />
     <ClInclude Include="src\GameFonts.h" />

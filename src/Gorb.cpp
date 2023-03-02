@@ -10,7 +10,7 @@ Gorb::Gorb(string name,int level, double startingMorale)
 	morale = startingMorale; 
 	currentUnit = 5; 
 	generateSkills(); 
-
+	decal = rand() % 5 + 1; 
 
 }
 Gorb::Gorb() {
@@ -115,7 +115,38 @@ void Gorb::generateSkills()
 		skill = rand() % 10; 
 	}
 }
-
+void Gorb::renderGorb(int posX, int posY) {
+	Image image; 
+	Texture2D imageTexture; 
+	switch (decal) {
+		case 1:
+			image = LoadImage("./assets/images/Gorb.png"); 
+			imageTexture = LoadTextureFromImage(image); 
+			UnloadImage(image); 
+			break; 
+		case 2:
+			image = LoadImage("./assets/images/Gorb2.png");
+			imageTexture = LoadTextureFromImage(image);
+			UnloadImage(image);
+			break;
+		case 3:
+			image = LoadImage("./assets/images/Gorb3.png");
+			imageTexture = LoadTextureFromImage(image);
+			UnloadImage(image);
+			break;
+		case 4:
+			image = LoadImage("./assets/images/Gorb4.png");
+			imageTexture = LoadTextureFromImage(image);
+			UnloadImage(image);
+			break;
+		case 5:
+			image = LoadImage("./assets/images/Gorb5.png");
+			imageTexture = LoadTextureFromImage(image);
+			UnloadImage(image);
+			break;
+	}
+	DrawTexture(imageTexture,posX,posY,WHITE);
+}
 #pragma region ACCESSORS AND MUTATORS
 int Gorb::getCurrentUnit() {
 	return currentUnit; 

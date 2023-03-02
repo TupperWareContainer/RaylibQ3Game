@@ -16,7 +16,8 @@ enum class UIMODE {
 	DEFAULT = 2,
 	STATS = 3,
 	MISSION = 4,
-	UNITBUILDER = 5
+	UNITBUILDER = 5, 
+	POPDISPLAY = 6
 };
 class UI {
 public: 

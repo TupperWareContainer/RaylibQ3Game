@@ -14,6 +14,7 @@ class Gorb {
 		double getMorale();
 		int getSkill(int);
 		void setSkill(int,int); 
+		void renderGorb(int posX, int posY);
 	private:
 		void generateSkills(); 
 		string generateName(); 
@@ -22,4 +23,5 @@ class Gorb {
 		string name; 
 		double morale; 
 		int level; 
+		int decal; 
 };

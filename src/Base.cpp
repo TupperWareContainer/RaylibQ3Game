@@ -60,6 +60,9 @@ int Base::getNumUnits() {
 Vector2 Base::getCentPos() {
 	return centPos; 
 }
+vector<Gorb> Base::getGorbs() {
+	return gorbList; 
+}
 void Base::addUnit(BaseUnit b) {
 	int unitType = b.getType(); 
 	std::cout << "b.getType(): " << b.getType() << endl; 

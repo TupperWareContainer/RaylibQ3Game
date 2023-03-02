@@ -72,7 +72,7 @@ void UI::drawUI(Base b,MissionManager m,BaseDev baseDev) {
 			buttonObjs[0].drawButton(true); 
 			break; 
 		case UIMODE::DEFAULT:
-			DrawText("[L]ist Stats\n[M]issions\n[B]ase Development", sectionWidth / 16, sectionHeight / 16,15,BLACK); 
+			DrawText("[L]ist Stats\n[M]issions\n[B]ase Development\n[V]iew Pops", sectionWidth / 16, sectionHeight / 16,15,BLACK); 
 			break; 
 		case UIMODE::STATS:
 		{ //what the fuck 
@@ -109,6 +109,10 @@ void UI::drawUI(Base b,MissionManager m,BaseDev baseDev) {
 			DrawTextEx(g.boldFont, "Units:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0, ORANGE);
 			DrawTextEx(g.boldFont, baseDev.getUnitStrings().c_str(), { (float)sectionWidth / 16, (float)sectionHeight / 16 + 15 }, 15, 0, LIME);
 			break; 
+		}
+		case UIMODE::POPDISPLAY:
+		{
+
 		}
 		default:
 			break;
