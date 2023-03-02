@@ -23,6 +23,10 @@ Base::Base(int startingCapacity, string name,int winHeight,int winWidth) {
 	this->name = name; 
 	std::cout << "adding command unit" << endl; 
 	unitList[0] = (BaseUnit(UNITTYPE::Command, startingCapacity, (int)centPos.x, (int)centPos.y)); 
+	unitList[1] = BaseUnit();
+	unitList[2] = BaseUnit();
+	unitList[3] = BaseUnit();
+	unitList[4] = BaseUnit();
 	money = 0;
 }
 void Base::renderUnits() {
@@ -44,10 +48,11 @@ int Base::getNumGorbs() {
 	return gorbList.size(); 
 }
 int Base::getNumUnits() {
-	int numUnits = 0;
-	for (int i = 0; i < sizeof(unitList); i++) {
-		if (&unitList[i] != nullptr) {
-			numUnits++;
+	int arrSize = MAX_UNITS;
+	int numUnits = 0; 
+	for (int i = 0; i < arrSize; i++) {
+		if (unitList[i].getType() != 5){
+			numUnits++; 
 		}
 	}
 	return numUnits; 

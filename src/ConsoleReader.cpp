@@ -25,6 +25,14 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 	if (consoleInput.empty()) {
 		return; 
 	}
+#pragma region cheatCodes
+	if (consoleInput.find("payday") != std::string::npos) {
+		bObj->addMoney(10000); 
+		std::cout << bObj->getMoney() << std::endl; 
+		std::cout << "I NEED A MEDIC BAG" << std::endl; 
+	}
+#pragma endregion
+
 	switch (consoleInput.at(0))
 	{
 		case 'L':
@@ -62,8 +70,11 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 			try { // TODO: ADD MONEY DETECTION
 				std::cout << "attempting to parse" << endl;
 				int num = int(consoleInput.at(0)) - 48;
-				if (num <= 4) {
+				if ((num <= 4) && bObj->getMoney() >= bDevObj->getUnitCost(num)) {
 					bDevObj->startConstruction(bObj, num); 
+				}
+				else {
+					std::cout << "Not enough money!" << std::endl; 
 				}
 			}
 			catch (std::bad_alloc e) {
