@@ -17,7 +17,8 @@ Base::Base(int startingCapacity, string name,int winHeight,int winWidth) {
 	int gorbsToGenerate = (int)(startingCapacity * 0.333); 
 	for (int i = 0; i < gorbsToGenerate; i++) {
 		std::cout << "Generating Gorbs" << endl; 
-		gorbList.push_back(Gorb()); 
+		Gorb g = Gorb(); 
+		gorbList.push_back(g); 
 	}
 	centPos = { (float)winWidth / 2.0f, (float)winHeight / 2.0f }; 
 	this->name = name; 
@@ -60,8 +61,8 @@ int Base::getNumUnits() {
 Vector2 Base::getCentPos() {
 	return centPos; 
 }
-vector<Gorb> Base::getGorbs() {
-	return gorbList; 
+vector<Gorb>* Base::getGorbs() {
+	return &gorbList; 
 }
 void Base::addUnit(BaseUnit b) {
 	int unitType = b.getType(); 

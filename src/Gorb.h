@@ -2,6 +2,7 @@
 #include <raylib.h>
 #include <math.h>
 #include <iostream>
+#include <string>
 using namespace std; 
 
 class Gorb {
@@ -9,12 +10,14 @@ class Gorb {
 		Gorb(string,int,double);
 		Gorb(); 
 		int getBestUnit(); 
+		int getBestUnit(int *arr, int arrsize);
 		int getCurrentUnit(); 
 		string getName(); 
 		double getMorale();
 		int getSkill(int);
 		void setSkill(int,int); 
 		void renderGorb(int posX, int posY);
+		string toString(); 
 	private:
 		void generateSkills(); 
 		string generateName(); 
@@ -24,4 +27,6 @@ class Gorb {
 		double morale; 
 		int level; 
 		int decal; 
+		string outputString; 
+
 };

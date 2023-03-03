@@ -23,7 +23,7 @@ class Base {
 		Vector2 getCentPos(); 
 		int getCapacity(); 
 		int getNumGorbs(); 
-		vector<Gorb> getGorbs(); 
+		vector<Gorb>* getGorbs(); 
 		int getNumUnits(); 
 		int getMoney(); 
 

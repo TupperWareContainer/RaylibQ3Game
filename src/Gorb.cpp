@@ -2,6 +2,7 @@
 #include <math.h>
 #include <raylib.h>
 #include "Gorb.h"
+#include <string>
 using namespace std; 
 
 Gorb::Gorb(string name,int level, double startingMorale) 
@@ -10,15 +11,17 @@ Gorb::Gorb(string name,int level, double startingMorale)
 	morale = startingMorale; 
 	currentUnit = 5; 
 	generateSkills(); 
-	decal = rand() % 5 + 1; 
+	decal = getBestUnit(); 
 
 }
 Gorb::Gorb() {
 	currentUnit = 5; 
 	morale = 1; 
 	level = 1; 
+	generateSkills();
+	decal = getBestUnit(skills,5); 
+	cout << "decal: " << decal << endl; 
 	name = generateName(); 
-	generateSkills(); 
 }
 string Gorb::generateName() {
 	int randFirst = rand() % 10 + 1; 
@@ -84,40 +87,37 @@ string Gorb::generateName() {
 int Gorb::getBestUnit() 
 {
 	int greatestSkillIndex = 0; 
-	int greatestSkillAmt = 0; 
-	for (int i = 0; i < sizeof(skills); i++) 
+	int greatestSkillAmt = -100; 
+	for (int i = 0; i < 5; i++) 
 	{
 		if (skills[i] > greatestSkillAmt) {
 			greatestSkillIndex = i; 
 			greatestSkillAmt = skills[i]; 
 		}
 	}
-	switch (greatestSkillIndex)
-	{
-		case 0:
-			return 0; 
-		case 1:
-			return 1;
-		case 2:
-			return 2;
-		case 3:
-			return 3;
-		case 4:
-			return 4;
-		default:
-			return 5;
+
+	return greatestSkillIndex; 
+}
+int Gorb::getBestUnit(int arr[], int arrsize) {
+	int greatestSkillIndex = 0;
+	int greatestSkillAmt = -100;
+	for (int i = 0; i < arrsize; i++) {
+		if (arr[i] > greatestSkillAmt) {
+			greatestSkillAmt = arr[i]; 
+			greatestSkillIndex = i; 
+		}
 	}
+	return greatestSkillIndex; 
 }
 void Gorb::generateSkills() 
 {
-	for each (int skill in skills )
-	{
-		skill = rand() % 10; 
+	for (int i = 0; i < 5; i++) {
+		skills[i] = rand() % 10 + 1; 
 	}
 }
 void Gorb::renderGorb(int posX, int posY) {
-	Image image; 
-	Texture2D imageTexture; 
+	Image image;
+	Texture2D imageTexture;
 	switch (decal) {
 		case 1:
 			image = LoadImage("./assets/images/Gorb.png"); 
@@ -144,6 +144,11 @@ void Gorb::renderGorb(int posX, int posY) {
 			imageTexture = LoadTextureFromImage(image);
 			UnloadImage(image);
 			break;
+		default:
+			image = LoadImage("./assets/images/Gorb.png");
+			imageTexture = LoadTextureFromImage(image);
+			UnloadImage(image);
+			break;
 	}
 	DrawTexture(imageTexture,posX,posY,WHITE);
 }
@@ -162,6 +167,30 @@ int Gorb::getSkill(int index) {
 }
 void Gorb::setSkill(int index,int newVal) {
 	skills[index] = newVal; 
+}
+string Gorb::toString() {
+	outputString.clear();
+	outputString = "[NAME: ";
+	outputString += name; 
+	outputString += " || LEVEL: "; 
+	outputString += to_string(level); 
+	outputString += " || MORALE: "; 
+	outputString += to_string(morale); 
+	outputString += "]\n[SKILLS][COMMAND: ";
+	outputString += to_string(skills[0]); 
+	outputString += " || RESEARCH: "; 
+	outputString += to_string(skills[1]); 
+	outputString += " || SUPPORT: ";
+	outputString += to_string(skills[2]);
+	outputString += " || COMBAT: ";
+	outputString += to_string(skills[3]);
+	outputString += " || MEDICAL: ";
+	outputString += to_string(skills[4]);
+	outputString += "]"; 
+	return outputString; 
+
+
+
 }
 #pragma endregion
 

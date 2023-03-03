@@ -1,16 +1,4 @@
-﻿  Base.cpp
-  BaseDev.cpp
-  BaseUnit.cpp
-  ConsoleReader.cpp
-E:\VGD\JohnF\RaylibQ3Game\src\GameFonts.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  FakeConsole.cpp
-E:\VGD\JohnF\RaylibQ3Game\src\GameFonts.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Gorb.cpp
-  Main.cpp
-E:\VGD\JohnF\RaylibQ3Game\src\GameFonts.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  MissionManager.cpp
-  UI.cpp
+﻿  UI.cpp
 E:\VGD\JohnF\RaylibQ3Game\src\GameFonts.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 E:\VGD\JohnF\RaylibQ3Game\src\UI.cpp(7,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Generating Code...
   BaseBuilder.vcxproj -> E:\VGD\JohnF\RaylibQ3Game\x64\Debug\BaseBuilder.exe

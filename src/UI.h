@@ -8,6 +8,7 @@
 #include "GameFonts.h" 
 #include "MissionManager.h"
 #include "BaseDev.h"
+#include <vector>
 
 using namespace std; 
 enum class UIMODE {
@@ -39,5 +40,6 @@ private:
 	int sectionWidth; 
 	int sectionHeight;
 	GameFonts g; 
+	string gorbString; 
 };
 

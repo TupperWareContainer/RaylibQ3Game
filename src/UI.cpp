@@ -112,7 +112,31 @@ void UI::drawUI(Base b,MissionManager m,BaseDev baseDev) {
 		}
 		case UIMODE::POPDISPLAY:
 		{
-
+			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 270, 130, BLACK); 
+			DrawTextEx(g.boldFont, "Pops:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0,  YELLOW);
+			std::vector<Gorb> gorbs = *b.getGorbs(); 
+			int gorbHeight = 0, gorbWidth = 0;
+			int gorbNum = 0; 
+			for each (Gorb gorb in gorbs)
+			{ 
+				gorbString.clear();
+				gorbString = to_string(gorbNum);
+				gorb.renderGorb((sectionWidth / 16) + 16* gorbWidth, ((sectionHeight / 16) + 16) + 16 * gorbHeight);
+				DrawTextEx(g.boldFont, gorbString.c_str(), { (float)(((sectionWidth / 16)) + 16 * gorbWidth), (float)(((sectionHeight / 16) + 16) + 16 * gorbHeight) },12,0,RAYWHITE);
+				gorbHeight++; 
+				if (gorbHeight >= 3) {
+					gorbWidth++; 
+					gorbHeight = 0; 
+				}
+				gorbNum++;
+			}
+			//gorbString = ""; 
+		/*	for each (Gorb gorb in gorbs)
+			{
+				gorbString += gorb.toString() + "\n"; 
+			}*/
+			//DrawTextEx(g.boldFont, gorbString.c_str(), { (float)sectionWidth / 16, (float)(sectionHeight / 16) * 5 }, 12, 0, LIME); 
+			//gorbString.clear(); 
 		}
 		default:
 			break;

@@ -47,6 +47,8 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 		case 'B':
 			uiObj->setMode(UIMODE::UNITBUILDER); 
 			break; 
+		case 'V':
+			uiObj->setMode(UIMODE::POPDISPLAY); 
 		default:
 			break;
 	}
@@ -67,7 +69,7 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 		}
 		case 5:
 		{
-			try { // TODO: ADD MONEY DETECTION
+			try {
 				std::cout << "attempting to parse" << endl;
 				int num = int(consoleInput.at(0)) - 48;
 				if ((num <= 4) && bObj->getMoney() >= bDevObj->getUnitCost(num)) {
@@ -80,6 +82,24 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 			catch (std::bad_alloc e) {
 				std::cout << "Not a number" << endl;
 			}
+			break; 
+		}
+		case 6: 
+		{
+			try{ 
+				std::cout << "attempting to parse" << endl;
+				int num = int(consoleInput.at(0)) - 48;
+				if ((num < bObj->getNumGorbs())) {
+					//TODO: DISPLAY STATS OF GORB 
+				}
+				else {
+					std::cout << "Not enough money!" << std::endl;
+				}
+			}
+				catch (std::bad_alloc e) {
+				std::cout << "Not a number" << endl;
+			}
+			break;
 			break; 
 		}
 	}
