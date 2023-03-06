@@ -10,6 +10,7 @@
 #include "BaseUnit.h" 
 #include "MissionManager.h"
 #include <stdlib.h>
+#include "Animation2D.h"
 using namespace std; 
 
 int main(int argc, char const *argv[])
