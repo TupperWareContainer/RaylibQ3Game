@@ -89,15 +89,20 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 			try{ 
 				std::cout << "attempting to parse" << endl;
 				int num = int(consoleInput.at(0)) - 48;
-				if ((num < bObj->getNumGorbs())) {
+				if ((num >= 0) && (num < bObj->getNumGorbs())) {
 					//TODO: DISPLAY STATS OF GORB 
+					uiObj->setGorbToDisplay(num); 
+					uiObj->setMode(UIMODE::GSTATS); 
+					uiObj->setDisplayGorbStats(true); 
 				}
 				else {
-					std::cout << "Not enough money!" << std::endl;
+					uiObj->setMode(UIMODE::POPDISPLAY); 
+					uiObj->setDisplayGorbStats(false); 
+					std::cout << "Not a valid character" << std::endl;
 				}
 			}
-				catch (std::bad_alloc e) {
-				std::cout << "Not a number" << endl;
+			catch (std::out_of_range e) {
+				std::cout << "Not a valid number" << endl;
 			}
 			break;
 			break; 

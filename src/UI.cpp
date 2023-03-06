@@ -17,6 +17,8 @@ UI::UI() {
 	buttonObjs[0].setPos(50, 50);
 	buttonObjs[1].setPos(300, 300);
 	buttonObjs[2].setPos(300, 350);
+	gorbToDisplay = 0; 
+	displayGorbStats = false; 
 	uiMode = UIMODE::DEFAULT;
 }
 UI::UI(int allotedWidth, int allotedHeight) {
@@ -28,6 +30,8 @@ UI::UI(int allotedWidth, int allotedHeight) {
 	buttonObjs[2].setPos(300, 350); 
 	sectionWidth = allotedWidth; 
 	sectionHeight = allotedHeight; 
+	gorbToDisplay = 0; 
+	displayGorbStats = false;
 	uiMode = UIMODE::DEFAULT; 
 }
 void UI::setButtonActive(int button, bool active) 
@@ -114,10 +118,10 @@ void UI::drawUI(Base b,MissionManager m,BaseDev baseDev) {
 		{
 			DrawRectangle(sectionWidth / 16, sectionHeight / 16, 270, 130, BLACK); 
 			DrawTextEx(g.boldFont, "Pops:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0,  YELLOW);
-			std::vector<Gorb> gorbs = *b.getGorbs(); 
+			gorbVector = *b.getGorbs();
 			int gorbHeight = 0, gorbWidth = 0;
 			int gorbNum = 0; 
-			for each (Gorb gorb in gorbs)
+			for each (Gorb gorb in gorbVector)
 			{ 
 				gorbString.clear();
 				gorbString = to_string(gorbNum);
@@ -138,10 +142,25 @@ void UI::drawUI(Base b,MissionManager m,BaseDev baseDev) {
 			//DrawTextEx(g.boldFont, gorbString.c_str(), { (float)sectionWidth / 16, (float)(sectionHeight / 16) * 5 }, 12, 0, LIME); 
 			//gorbString.clear(); 
 		}
+		case UIMODE::GSTATS:
+		{
+			if (displayGorbStats) {
+				gorbVector = *b.getGorbs();
+				DrawRectangle(sectionWidth / 16, sectionHeight / 16, 270, 130, BLACK);
+				DrawTextEx(g.boldFont, "Gorb Stats:", { (float)sectionWidth / 16, (float)sectionHeight / 16 }, 18, 0, GREEN);
+				DrawTextEx(g.boldFont, gorbVector.at(gorbToDisplay).toString().c_str(), { (float)sectionWidth / 16, ((float)sectionHeight / 16) + 15 }, 12, 0, LIME);
+			}
+		}
 		default:
 			break;
 	}
 }
+void UI::setGorbToDisplay(int gorbNum) {
+	gorbToDisplay = gorbNum; 
+}
 int UI::getMode() {
 	return static_cast<int>(uiMode); 
+}
+void UI::setDisplayGorbStats(bool b) {
+	displayGorbStats = b; 
 }

@@ -18,7 +18,8 @@ enum class UIMODE {
 	STATS = 3,
 	MISSION = 4,
 	UNITBUILDER = 5, 
-	POPDISPLAY = 6
+	POPDISPLAY = 6,
+	GSTATS = 7
 };
 class UI {
 public: 
@@ -31,7 +32,9 @@ public:
 	void drawUI(Base b, MissionManager m,BaseDev baseDev);
 	void setMode(UIMODE mode);
 	void printDefaultMenu(); 
+	void setGorbToDisplay(int gorbNum); 
 	int getMode();
+	void setDisplayGorbStats(bool b); 
 private:
 	bool buttons[10];
 	UIButton buttonObjs[10]; 
@@ -41,5 +44,8 @@ private:
 	int sectionHeight;
 	GameFonts g; 
 	string gorbString; 
+	int gorbToDisplay; 
+	vector<Gorb> gorbVector; 
+	bool displayGorbStats; 
 };
 

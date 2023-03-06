@@ -4,6 +4,8 @@
 #include "MissionManager.h"
 #include "Base.h"
 #include "BaseDev.h"
+#include "Gorb.h"
+#include <vector>
 
 using namespace std; 
 class ConsoleReader {
