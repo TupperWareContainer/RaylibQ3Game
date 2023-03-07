@@ -11,23 +11,26 @@
 #include "MissionManager.h"
 #include <stdlib.h>
 #include "Animation2D.h"
+#include "AnimationManager.h"
 using namespace std; 
 
-int main(int argc, char const *argv[])
+int main(int argc, char const* argv[])
 {
-    SetTargetFPS(60); 
+    SetTargetFPS(60);
     cout << "debug testing sfzsfgsf" << (rand() % 101) << endl;
-   
-    Base base; 
-   // BaseUnit bV[10]; 
-    //ConnectionManager cm = ConnectionManager();
+
+    Base base;
+    // BaseUnit bV[10]; 
+     //ConnectionManager cm = ConnectionManager();
     bool hasRendered = false;
-   /* bool test = false; 
-    bool moveMode = false; 
-    bool drawMode = false, canDraw = false;
-    bool movingObj = false; 
-    int movingObjIndex = -1; 
-    unsigned int currPlacingSegment = 0; */
+    /* bool test = false;
+     bool moveMode = false;
+     bool drawMode = false, canDraw = false;
+     bool movingObj = false;
+     int movingObjIndex = -1;
+     unsigned int currPlacingSegment = 0; */
+    AnimationManager animManager = AnimationManager();
+    Animation2D a = Animation2D(string("./assets/images/testAni.png"), 1, 2, { 200,150 }, { 16,16 }); 
     string baseName; 
     int baseCapacity; 
     const int width = 800;
@@ -60,6 +63,7 @@ int main(int argc, char const *argv[])
             base.renderUnits(); 
             //cout << base.getMoney() << endl; 
             ui.drawUI(base,m,baseDev);
+            animManager.runAnimation(&a, 6); 
 #pragma region deprecated
 
 

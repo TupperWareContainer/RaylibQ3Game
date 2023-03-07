@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include <thread>
+#include <chrono>
 class Animation2D
 {
 	public:
@@ -15,6 +17,7 @@ class Animation2D
 		int numFrames; 
 		Texture spriteSheetTexture; 
 		Rectangle currSprite; 
+		Vector2 centPos; 
 		//Image currImage; 
 		std::string imagePath; 
 }; 
