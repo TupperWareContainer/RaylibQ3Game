@@ -7,14 +7,14 @@
 class Animation2D
 {
 	public:
-		Animation2D(std::string imagePaths[],long frameDelaySeconds,int numFrames,Vector2 centPos); 
+		Animation2D(std::string imagePath,long frameDelaySeconds,int numFrames,Vector2 centPos,Vector2 dimensions); 
 		void render(int repetitions);
 
 	private:
 		long frameDelaySeconds; 
 		int numFrames; 
-		Texture currTexture; 
-		Image currImage; 
-		Vector2 centPos; 
-		std::vector<std::string> imagePaths; 
+		Texture spriteSheetTexture; 
+		Rectangle currSprite; 
+		//Image currImage; 
+		std::string imagePath; 
 }; 
