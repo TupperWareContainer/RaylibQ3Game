@@ -48,7 +48,7 @@
     <ClCompile Include="src\BaseDev.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Animation2D.cpp">
+    <ClCompile Include="src\Deprecated\Animation2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,10 +86,10 @@
     <ClInclude Include="src\BaseDev.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Animation2D.h">
+    <ClInclude Include="C:\Users\1713323\Downloads\AnimatorForRaylib\AnimatorForRaylib\Include\Animator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\1713323\Downloads\AnimatorForRaylib\AnimatorForRaylib\Include\Animator.h">
+    <ClInclude Include="src\Deprecated\Animation2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
