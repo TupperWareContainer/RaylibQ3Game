@@ -8,6 +8,7 @@
 
 MissionManager::MissionManager(){
 	generateMissions(); 
+	missionUnderway = false; 
 }
 void MissionManager::generateMissions() {
 	int randType, randTime, randDiff; 
@@ -21,6 +22,7 @@ void MissionManager::generateMissions() {
 		missionList[i] = Mission(static_cast<MissionType>(randType), (double)randTime, static_cast<Difficulty>(randDiff));
 	}
 	nullMission = Mission(); 
+	missionUnderway = false; 
 }
 std::string MissionManager::getMissionStrings() {
 	std::string output = ""; 
@@ -39,17 +41,21 @@ std::string MissionManager::getMissionStrings() {
 void MissionManager::completeMission(int missionNum, Base *b) {
 	b->addMoney(missionList[missionNum].getMoneyReward()); 
 	missionList[missionNum] = nullMission; 
+	missionUnderway = false;
 }
 void MissionManager::runMission(int missionNum,Base* b) {
 	std::cout << "started timer at: " << GetTime() << std::endl; 
 	std::chrono::seconds missionTime((long)missionList[missionNum].getTimeToComplete());
+	missionUnderway = true; 
+	PlaySound(LoadSound("./assets/sounds/ScheduleEventSound.wav")); 
 	std::thread([=]() {
 		std::cout <<"\nstarting timer for " << (long)missionList[missionNum].getTimeToComplete() << " seconds" << std::endl;
 		std::this_thread::sleep_for(missionTime); 
 		completeMission(missionNum, b); 
 		std::cout << "ended timer at: " << GetTime() << std::endl;
+		PlaySound(LoadSound("./assets/sounds/MissionComplete.wav")); 
 	}).detach();
-	
-	
-	
+}
+bool MissionManager::getMissionUnderway() {
+	return missionUnderway; 
 }

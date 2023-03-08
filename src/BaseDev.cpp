@@ -7,7 +7,7 @@
 #include <thread>
 
 BaseDev::BaseDev() {
-
+	isBuilding = false; 
 }
 BaseDev::BaseDev(long buildTime, Base b) {
 	this->buildTime = buildTime; 
@@ -17,6 +17,7 @@ BaseDev::BaseDev(long buildTime, Base b) {
 	unitList[1] = BaseUnit(UNITTYPE::Support, 30, b.getCentPos().x - 32, b.getCentPos().y);
 	unitList[2] = BaseUnit(UNITTYPE::Combat, 30, b.getCentPos().x, b.getCentPos().y + 32);
 	unitList[3] = BaseUnit(UNITTYPE::Medical, 30, b.getCentPos().x, b.getCentPos().y - 32);
+	isBuilding = false; 
 }
 void BaseDev::completeConstruction(Base *b, int unitType) 
 {
@@ -26,11 +27,15 @@ void BaseDev::completeConstruction(Base *b, int unitType)
 }
 void BaseDev::startConstruction(Base *b, int unitType) {
 	std::chrono::seconds buildTime(buildTime);
+	isBuilding = true;
+	PlaySound(LoadSound("./assets/sounds/ScheduleEventSound.wav"));
 	std::thread([=]() {
 		std::cout << "\nstarting timer for " << this->buildTime << " seconds" << std::endl;
 		std::this_thread::sleep_for(buildTime);
 		completeConstruction(b, unitType);
 		std::cout << "ended timer at: " << GetTime() << std::endl;
+		isBuilding = false; 
+		PlaySound((LoadSound("./assets/sounds/MissionComplete.wav"))); 
 	}).detach();
 }
 int BaseDev::getUnitCost(int unitNum) {
@@ -55,4 +60,7 @@ std::string BaseDev::getUnitStrings() {
 	}
 	//std::cout << output << std::endl; 
 	return output; 
+}
+bool BaseDev::getIsBuilding() {
+	return isBuilding; 
 }

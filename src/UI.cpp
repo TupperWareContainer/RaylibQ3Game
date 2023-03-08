@@ -154,7 +154,24 @@ void UI::drawUI(Base b,MissionManager m,BaseDev baseDev) {
 		default:
 			break;
 	}
+	if (m.getMissionUnderway()) {
+		DrawRectangle(32, sectionHeight - 16, 96, 16, GREEN);
+		DrawTextEx(g.boldFont, "Mission Underway", { (float)38, (float)sectionHeight - 16 }, 12, 0, BLACK);
+	}
+	else {
+		DrawRectangle(32, sectionHeight - 16, 96, 16, DARKGRAY);
+		DrawTextEx(g.boldFont, "Mission Underway", { (float)38, (float)sectionHeight - 16 }, 12, 0, BLACK);
+	}
+	if (baseDev.getIsBuilding()) {
+		DrawRectangle(32 + 96 + 16, sectionHeight - 16, 100, 16, GREEN);
+		DrawTextEx(g.boldFont, "Unit Construction", { (float)38 + 96 + 16, (float)sectionHeight - 16 }, 12, 0, BLACK);
+	}
+	else {
+		DrawRectangle(32 + 96 + 16, sectionHeight - 16, 100, 16, DARKGRAY);
+		DrawTextEx(g.boldFont, "Unit Construction", { (float)38 + 96 + 16, (float)sectionHeight - 16 }, 12, 0, BLACK);
+	}
 }
+
 void UI::setGorbToDisplay(int gorbNum) {
 	gorbToDisplay = gorbNum; 
 }

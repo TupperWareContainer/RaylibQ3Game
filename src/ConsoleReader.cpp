@@ -33,25 +33,32 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 	}
 #pragma endregion
 
+	
 	switch (consoleInput.at(0))
 	{
 		case 'L':
 			uiObj->setMode(UIMODE::STATS);
+			PlaySound(LoadSound("./assets/sounds/MenuChangeSound.wav") );
 			break;
 		case 'E':
 			uiObj->setMode(UIMODE::DEFAULT);
+			PlaySound(LoadSound("./assets/sounds/MenuChangeSound.wav") );
 			break; 
 		case 'M':
 			uiObj->setMode(UIMODE::MISSION); 
+			PlaySound(LoadSound("./assets/sounds/MenuChangeSound.wav"));
 			break;
 		case 'B':
 			uiObj->setMode(UIMODE::UNITBUILDER); 
+			PlaySound(LoadSound("./assets/sounds/MenuChangeSound.wav"));
 			break; 
 		case 'V':
 			uiObj->setMode(UIMODE::POPDISPLAY); 
+			PlaySound(LoadSound("./assets/sounds/MenuChangeSound.wav"));
 		default:
 			break;
 	}
+	//UnloadSound(s); 
 	switch (uiObj->getMode()) {
 		case 4: 
 		{
@@ -76,7 +83,9 @@ void ConsoleReader::filterFakeConsoleInput(string consoleInput) {
 					bDevObj->startConstruction(bObj, num); 
 				}
 				else {
+					PlaySound(LoadSound("./assets/sounds/FailedToScheduleSound.wav")); 
 					std::cout << "Not enough money!" << std::endl; 
+
 				}
 			}
 			catch (std::bad_alloc e) {

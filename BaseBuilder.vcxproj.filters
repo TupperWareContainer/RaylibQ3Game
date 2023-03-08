@@ -51,9 +51,6 @@
     <ClCompile Include="src\Animation2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\AnimationManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\UI.h">
@@ -95,11 +92,13 @@
     <ClInclude Include="C:\Users\1713323\Downloads\AnimatorForRaylib\AnimatorForRaylib\Include\Animator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\AnimationManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="C:\Users\1713323\Downloads\ScheduleEventSound.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -115,7 +115,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Animation2D.cpp" />
-    <ClCompile Include="src\AnimationManager.cpp" />
     <ClCompile Include="src\BaseDev.cpp" />
     <ClCompile Include="src\BaseUnit.cpp" />
     <ClCompile Include="src\ConsoleReader.cpp" />
@@ -131,7 +130,6 @@
   <ItemGroup>
     <ClInclude Include="C:\Users\1713323\Downloads\AnimatorForRaylib\AnimatorForRaylib\Include\Animator.h" />
     <ClInclude Include="src\Animation2D.h" />
-    <ClInclude Include="src\AnimationManager.h" />
     <ClInclude Include="src\Base.h" />
     <ClInclude Include="src\BaseDev.h" />
     <ClInclude Include="src\BaseUnit.h" />
@@ -146,6 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="C:\Users\1713323\Downloads\ScheduleEventSound.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

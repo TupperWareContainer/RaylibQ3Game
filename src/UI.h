@@ -38,6 +38,7 @@ public:
 private:
 	bool buttons[10];
 	UIButton buttonObjs[10]; 
+	string loadMessage; 
 	UIMODE uiMode; 
 	//void drawButton(int);
 	int sectionWidth; 

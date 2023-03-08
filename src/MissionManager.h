@@ -14,10 +14,11 @@ class MissionManager {
 		std::string getMissionStrings(); 
 		void completeMission(int missionNum, Base *b);
 		void runMission(int missionNum,Base* b); 
-		
+		bool getMissionUnderway(); 
 	private:
 		Mission missionList[5]; // there can only be 5 active missions at a time
 		void generateMissions();
 		Mission nullMission; 
+		bool missionUnderway; 
  
 };

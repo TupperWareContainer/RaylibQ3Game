@@ -12,10 +12,12 @@ class BaseDev {
 		void startConstruction(Base *b, int unitType); 
 		void completeConstruction(Base *b, int unitType); 
 		int getUnitCost(int unitType); 
+		bool getIsBuilding();
 		std::string getUnitStrings(); 
 	private: 
 		BaseUnit unitList[4]; 
 		BaseUnit nullUnit; 
+		bool isBuilding; 
 		long buildTime; 
 		int unitCost; 
 

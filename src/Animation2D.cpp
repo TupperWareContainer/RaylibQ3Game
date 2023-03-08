@@ -33,12 +33,20 @@ void Animation2D::render(int repetitions) {
 	int reps = 0; 
 	int timer = 0; 
 	float initX = currSprite.x; 
+	int currentFrame = 0; 
 	spriteSheetTexture = LoadTexture(imagePath.c_str()); 
 	while (reps < repetitions) {
 		frameCounter++; 
 		if (frameCounter >= frameDelaySeconds * 60) {
-
+			currentFrame++; 
+			if (currentFrame > numFrames) {
+				reps++; 
+				currentFrame = 0;
+				currSprite.x = (float)currentFrame * (float)spriteSheetTexture.width / numFrames;
+			}
 		}
+		DrawRectangleV({ currSprite.x,currSprite.y }, { currSprite.width,currSprite.height }, RED);
+		DrawTextureRec(spriteSheetTexture, currSprite, centPos, WHITE); 
 	}
 	
 }

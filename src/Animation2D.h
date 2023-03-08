@@ -11,9 +11,10 @@ class Animation2D
 	public:
 		Animation2D(std::string imagePath,long frameDelaySeconds,int numFrames,Vector2 centPos,Vector2 dimensions); 
 		void render(int repetitions);
-
+		//int getPort(); 
 	private:
 		long frameDelaySeconds; 
+		//int port; 
 		int numFrames; 
 		Texture spriteSheetTexture; 
 		Rectangle currSprite; 

@@ -11,7 +11,7 @@
 #include "MissionManager.h"
 #include <stdlib.h>
 #include "Animation2D.h"
-#include "AnimationManager.h"
+//#include "AnimationManager.h"
 using namespace std; 
 
 int main(int argc, char const* argv[])
@@ -29,8 +29,7 @@ int main(int argc, char const* argv[])
      bool movingObj = false;
      int movingObjIndex = -1;
      unsigned int currPlacingSegment = 0; */
-    AnimationManager animManager = AnimationManager();
-    Animation2D a = Animation2D(string("./assets/images/testAni.png"), 1, 2, { 200,150 }, { 16,16 }); 
+    //Animation2D a = Animation2D(string("./assets/images/testAni.png"), 10, 2, { 200,150 }, { 16,16 });
     string baseName; 
     int baseCapacity; 
     const int width = 800;
@@ -42,6 +41,7 @@ int main(int argc, char const* argv[])
     ConsoleReader cr = ConsoleReader(&ui, &m,&base,&baseDev);
     ui.setMode(UIMODE::DEFAULT); 
     FakeConsole fakeConsole = FakeConsole(width / 2, height, BLACK, { width / 2.0f, 0 },&cr);
+    InitAudioDevice(); 
     while(!WindowShouldClose()){
         BeginDrawing();
         #pragma region Draw
@@ -57,13 +57,15 @@ int main(int argc, char const* argv[])
             base = Base(30, baseName,width / 2,height);
             hasRendered = true;
             baseDev = BaseDev(10l,base); 
+            PlaySound(LoadSound("./assets/sounds/Instrument.wav")); 
         }
         if (hasRendered) {
             fakeConsole.render(); 
             base.renderUnits(); 
             //cout << base.getMoney() << endl; 
             ui.drawUI(base,m,baseDev);
-            animManager.runAnimation(&a, 6); 
+            //animManager.runAnimation(&a, 6); 
+           // a.render(6); 
 #pragma region deprecated
 
 
@@ -146,6 +148,7 @@ int main(int argc, char const* argv[])
         #pragma endregion
         EndDrawing(); 
     }
+    CloseAudioDevice(); 
     CloseWindow(); 
     return 0;
 }
